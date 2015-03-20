@@ -18,8 +18,27 @@ class SimpleVector2D
     inline void SetX(double p_value) { m_x = p_value; }
     inline void SetY(double p_value) { m_y = p_value; }
     
+    inline SimpleVector2D & operator += (const SimpleVector2D & p_source) 
+    {
+      m_x += p_source.m_x;
+      m_y += p_source.m_y;
+      return (*this);
+    }
+    
     inline SimpleVector2D operator + (const SimpleVector2D & p_source) const
     {
-      return SimpleVector2D(p_source.GetX()+GetX(), p_source.GetY()+GetY());
+      return p_source + (*this);
+    }
+
+    inline SimpleVector2D & operator -= (const SimpleVector2D & p_source) 
+    {
+      m_x -= p_source.m_x;
+      m_y -= p_source.m_y;
+      return (*this);
+    }
+    
+    inline SimpleVector2D operator - (const SimpleVector2D & p_source) const
+    {
+      return p_source - (*this);
     }
 };
