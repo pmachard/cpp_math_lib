@@ -41,4 +41,58 @@ class SimpleVector2D
     {
       return p_source - (*this);
     }
+
+SimpleVector2D operator * (const double & p_value) const
+{
+return SimpleVector2D(m_x*p_value,m_y*p_value);
+}
+
+SimpleVector2D & operator =* (const double & p_value)
+{
+m_x *= p_value;
+m_y *= p_value;
+return (*this)
+}
+
+SimpleVector2D operator / (const double & p_value) const
+{
+if (p_value == 0.0)
+    throw new exception();
+return SimpleVector2D(m_x/p_value,m_y/p_value);
+}
+
+SimpleVector2D & operator =/ (const double & p_value)
+{
+if (p_value == 0.0)
+    throw new exception();
+m_x /= p_value;
+m_y /= p_value;
+return (*this)
+}
+SimpleVector2D operator * (const SimpleVector2D & p_source) const
+{
+return SimpleVector2D(*this)*p_source;
+}
+
+SimpleVector2D & operator =* (SimpleVector2D & p_source)
+{
+m_x *= p_source.m_x;
+m_y *= p_source.m_y;
+return (*this)
+}
+
+double  operator ^ (SimpleVector2D & p_source) const
+{
+return (m_x * p_source.m_y )- (m_y * p_source.m_x);
+}
+
+bool operator == (const SimpleVector2D & p_source)
+{
+return ((m_x == p_source.m_x) && (m_y == p_source.m_y));
+}
+
+bool operator != (const SimpleVector2D & p_source)
+{
+return !this->operator(p_source);
+}    
 };
