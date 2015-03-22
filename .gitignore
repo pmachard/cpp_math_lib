@@ -23,6 +23,10 @@
 *.lib
 
 # Executables
+bin
 *.exe
 *.out
 *.app
+
+# debug file 
+*.pdb
