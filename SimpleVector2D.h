@@ -100,6 +100,11 @@ namespace cpp_math_lib {
 		{
 			return !this->operator == (p_source);
 		}
-	};
+		
+		double LengthSquared (void)
+		{
+			return m_x * m_x + m_y * m_y + m_z * m_z;
+		}
 
+	};
 }
