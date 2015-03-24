@@ -1,5 +1,6 @@
 #pragma once
-namespace cpp_math_lib {
+namespace prj {
+namespace math {
 	class SimpleVector3D
 	{
 		private:
@@ -111,4 +112,5 @@ namespace cpp_math_lib {
 			}
 		
 	};
+}
 }
