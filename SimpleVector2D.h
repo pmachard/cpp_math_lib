@@ -103,7 +103,7 @@ namespace cpp_math_lib {
 		
 		double LengthSquared (void)
 		{
-			return m_x * m_x + m_y * m_y + m_z * m_z;
+			return m_x * m_x + m_y * m_y;
 		}
 
 	};
