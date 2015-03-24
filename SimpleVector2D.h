@@ -1,6 +1,7 @@
 #pragma once
 
-namespace cpp_math_lib {
+namespace prj {
+namespace math {
 	class SimpleVector2D
 	{
 	private:
@@ -104,4 +105,5 @@ namespace cpp_math_lib {
 			return m_x * m_x + m_y * m_y;
 		}
 	};
+}
 }
