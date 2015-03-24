@@ -1,13 +1,11 @@
 #pragma once
 
 namespace cpp_math_lib {
-
 	class SimpleVector2D
 	{
 	private:
 		double m_x;
 		double m_y;
-
 	public:
 		inline SimpleVector2D(void) : m_x(0.0), m_y(0.0) {}
 		inline SimpleVector2D(double p_x, double p_y) : m_x(p_x), m_y(p_y) {}
@@ -16,7 +14,7 @@ namespace cpp_math_lib {
 			m_x = p_source.m_x;
 			m_y = p_source.m_y;
 		}
-
+		
 		inline double GetX(void) const  { return m_x; }
 		inline double GetY(void)const  { return m_y; }
 		inline void SetX(double p_value) { m_x = p_value; }
@@ -105,6 +103,5 @@ namespace cpp_math_lib {
 		{
 			return m_x * m_x + m_y * m_y;
 		}
-
 	};
 }
