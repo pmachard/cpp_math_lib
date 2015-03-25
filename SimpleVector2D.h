@@ -29,6 +29,11 @@ public:
 	inline void SetX(const double & p_value) { m_x = p_value; }
 	inline void SetY(const double & p_value) { m_y = p_value; }
 
+	inline SimpleVector2D abs (void) const
+	{
+		return SimpleVector2D(fabs(m_x),fabs(m_y));
+	}
+
 	inline SimpleVector2D & operator += (const SimpleVector2D & p_source)
 	{
 		m_x += p_source.m_x;
