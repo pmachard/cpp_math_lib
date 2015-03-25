@@ -9,7 +9,7 @@ private:
 	double m_z;
 public:
 	inline SimpleVector3D(void) : m_x(0.0), m_y(0.0), m_z(0.0) {}
-	inline SimpleVector3D(double p_x, double p_y, double p_z) : m_x(p_x), m_y(p_y), m_z(p_z) {}
+	inline SimpleVector3D(const double & p_x, const double & p_y, const double & p_z) : m_x(p_x), m_y(p_y), m_z(p_z) {}
 	inline SimpleVector3D(const SimpleVector2D & p_source)
 	{
 		m_x = p_source.m_x;
@@ -25,12 +25,12 @@ public:
 		return (*this);
 	}
 	
-	inline double GetX(void) const { return m_x; }
-	inline double GetY(void)const { return m_y; }
-	inline double GetZ(void)const { return m_z; }
-	inline void SetX(double p_value) { m_x = p_value; }
-	inline void SetY(double p_value) { m_y = p_value; }
-	inline void SetZ(double p_value) { m_z = p_value; }
+	inline const double & GetX(void) const { return m_x; }
+	inline const double & GetY(void)const { return m_y; }
+	inline const double & GetZ(void)const { return m_z; }
+	inline void SetX(const double & p_value) { m_x = p_value; }
+	inline void SetY(const double & p_value) { m_y = p_value; }
+	inline void SetZ(const double & p_value) { m_z = p_value; }
 	
 	inline SimpleVector3D & operator += (const SimpleVector3D & p_source)
 	{
@@ -93,7 +93,7 @@ public:
 		return SimpleVector3D(*this)*p_source;
 	}
 	
-	inline SimpleVector2D & operator *= (SimpleVector2D & p_source)
+	inline SimpleVector2D & operator *= (const SimpleVector2D & p_source)
 	{
 		m_x *= p_source.m_x;
 		m_y *= p_source.m_y;
@@ -101,7 +101,7 @@ public:
 		return (*this);
 	}
 	
-	inline double operator ^ (SimpleVector3D & p_source) const
+	inline double operator ^ (const SimpleVector3D & p_source) const
 	{
 		return (m_x * p_source.m_y) - (m_y * p_source.m_x);
 	}
