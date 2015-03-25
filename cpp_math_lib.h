@@ -4,10 +4,12 @@
 
 using namespace System;
 
-namespace cpp_math_lib {
+namespace prj {
+	namespace math {
 
-	public ref class Class1
-	{
-		// TODO: Add your methods for this class here.
-	};
+		public ref class Class1
+		{
+			// TODO: Add your methods for this class here.
+		};
+	}
 }
