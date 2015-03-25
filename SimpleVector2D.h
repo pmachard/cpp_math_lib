@@ -16,6 +16,14 @@ namespace math {
 			m_y = p_source.m_y;
 		}
 		
+		inline SimpleVector2D & operator = (const SimpleVector2D & p_source)
+		{
+			m_x = p_source.m_x;
+			m_y = p_source.m_y;
+			return (*this);
+		}
+		
+		
 		inline double GetX(void) const  { return m_x; }
 		inline double GetY(void)const  { return m_y; }
 		inline void SetX(double p_value) { m_x = p_value; }
