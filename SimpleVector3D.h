@@ -50,12 +50,12 @@ namespace math {
 				return p_source - (*this);
 			}
 			
-			SimpleVector3D operator * (const double & p_value) const
+			inline SimpleVector3D operator * (const double & p_value) const
 			{
 				return SimpleVector3D(m_x*p_value, m_y*p_value, m_z*p_value);
 			}
 			
-			SimpleVector2D & operator *= (const double & p_value)
+			inline SimpleVector2D & operator *= (const double & p_value)
 			{
 				m_x *= p_value;
 				m_y *= p_value;
@@ -63,14 +63,14 @@ namespace math {
 				return (*this);
 			}
 			
-			SimpleVector3D operator / (const double & p_value) const
+			inline SimpleVector3D operator / (const double & p_value) const
 			{
 				if (p_value == 0.0)
 					throw;
 				return SimpleVector3D(m_x / p_value, m_y / p_value, m_z / p_value);
 			}
 			
-			SimpleVector3D & operator /= (const double & p_value)
+			inline SimpleVector3D & operator /= (const double & p_value)
 			{
 				if (p_value == 0.0)
 					throw;
@@ -80,37 +80,38 @@ namespace math {
 				return (*this);
 			}
 			
-			SimpleVector3D operator * (const SimpleVector3D & p_source) const
+			inline SimpleVector3D operator * (const SimpleVector3D & p_source) const
 			{
 				return SimpleVector3D(*this)*p_source;
 			}
 			
-			SimpleVector2D & operator *= (SimpleVector2D & p_source)
+			inline SimpleVector2D & operator *= (SimpleVector2D & p_source)
 			{
 				m_x *= p_source.m_x;
 				m_y *= p_source.m_y;
 				m_z *= p_source.m_y;
 				return (*this);
 			}
-			double operator ^ (SimpleVector3D & p_source) const
+			
+			inline double operator ^ (SimpleVector3D & p_source) const
 			{
 				return (m_x * p_source.m_y) - (m_y * p_source.m_x);
 			}
-			bool operator == (const SimpleVector3D & p_source)
+			
+			inline bool operator == (const SimpleVector3D & p_source)
 			{
 				return ((m_x == p_source.m_x) && (m_y == p_source.m_y) && (m_z == p_source.m_z));
 			}
 			
-			bool operator != (const SimpleVector3D & p_source)
+			inline bool operator != (const SimpleVector3D & p_source)
 			{
 				return !this->operator == (p_source);
 			}
 			
-			double LengthSquared (void)
+			inline double LengthSquared (void)
 			{
 				return m_x * m_x + m_y * m_y + m_z * m_z;
 			}
-		
 	};
 }
 }
