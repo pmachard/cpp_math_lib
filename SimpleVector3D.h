@@ -112,6 +112,12 @@ namespace math {
 			{
 				return m_x * m_x + m_y * m_y + m_z * m_z;
 			}
-	};
+			
+ 			static SimpleVector3D Cross(const SimpleVector3D & vectorA, const SimpleVector3D & vectorB)
+ 			{
+ 				return SimpleVector3D (vectorA.y * vectorB.z - vectorA.z * vectorB.y,
+ 				vectorA.z * vectorB.x - vectorA.x * vectorB.z,
+ 				vectorA.x * vectorB.y - vectorA.y * vectorB.x);			
+ 			}
 }
 }
