@@ -31,6 +31,11 @@ public:
 	inline void SetX(const double & p_value) { m_x = p_value; }
 	inline void SetY(const double & p_value) { m_y = p_value; }
 	inline void SetZ(const double & p_value) { m_z = p_value; }
+
+	inline SimpleVector3D abs (void) const
+	{
+		return SimpleVector3D(fabs(m_x),fabs(m_y),fabs(m_z));
+	}
 	
 	inline SimpleVector3D & operator += (const SimpleVector3D & p_source)
 	{
