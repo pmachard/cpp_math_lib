@@ -6,7 +6,7 @@
 #include "SimpleVector2D.h"
 
 using namespace System;
-using namespace prj::math_lib;
+using namespace prj::math;
 using namespace prj::unit_test;
 
 class TestSimpleVector2D : public UnitTest
