@@ -17,6 +17,14 @@ namespace math {
 				m_z = p_source.m_z;
 			}
 			
+			inline SimpleVector3D & operator = (const SimpleVector3D & p_source)
+			{
+				m_x = p_source.m_x;
+				m_y = p_source.m_y;
+				m_z = p_source.m_z;
+				return (*this);
+			}
+			
 			inline double GetX(void) const { return m_x; }
 			inline double GetY(void)const { return m_y; }
 			inline double GetZ(void)const { return m_z; }
