@@ -20,7 +20,10 @@ public :
 		Check(v1.GetX() == 0.0 && v1.GetY() == 0.0,"Error in the default constuctor");
 
 		SimpleVector2D v2(2.0, 2.0);
-		Check(v2.GetX() == 1.0 && v2.GetY() == 2.0, "Error in the constuctor with 2 parameter");
+		Check(v2.GetX() == 1.0 && v2.GetY() == 2.0, "Error in the constuctor with 2 parameter");*
+		
+		SimpleVector2D v3(v2);
+		Check(v3.GetX() == 1.0 && v3.GetY() == 2.0, "Error in the constuctor with copy poarameter");
 		Console::WriteLine(L"TestSimpleVector2D::Constructor End");
 	}
 
