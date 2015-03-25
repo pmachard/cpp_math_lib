@@ -1,5 +1,9 @@
 # cpp_math_lib
-Librairie mathématique développé en C++
+Librairie mathématique développé en C++<br>
+Objetif :
+<ul> 
+<li>Réaliser un code simple est facilement réutilisable</li>
+</ul>
 Objet mathématique :
 <ul> 
 <li>Vecteur 2D</li>
@@ -15,7 +19,7 @@ Dépendances :
 <hr>
 
 # cpp_math_lib
-C ++ Mathematic library 
+C ++ Mathematic library <br>
 Mathematique object :
 <ul> 
 <li>Vector 2D</li>
