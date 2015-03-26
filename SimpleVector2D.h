@@ -1,5 +1,7 @@
 #pragma once
 
+#include "math.h"
+
 namespace prj {
 namespace math {
 class SimpleVector2D
