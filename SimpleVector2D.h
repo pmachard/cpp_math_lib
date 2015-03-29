@@ -25,7 +25,6 @@ public:
 		return (*this);
 	}
 	
-	
 	inline const double & GetX(void) const  { return m_x; }
 	inline const double & GetY(void)const  { return m_y; }
 	inline void SetX(const double & p_value) { m_x = p_value; }
@@ -45,7 +44,7 @@ public:
 
 	inline SimpleVector2D operator + (const SimpleVector2D & p_source) const
 	{
-		return p_source + (*this);
+		return SimpleVector2D(m_x + p_source.m_x,m_y + p_source.m_y);
 	}
 
 	inline SimpleVector2D & operator -= (const SimpleVector2D & p_source)
@@ -57,7 +56,7 @@ public:
 
 	inline SimpleVector2D operator - (const SimpleVector2D & p_source) const
 	{
-		return p_source - (*this);
+		return SimpleVector2D(m_x - p_source.m_x,m_y - p_source.m_y);
 	}
 
 	inline SimpleVector2D operator * (const double & p_value) const
@@ -90,7 +89,7 @@ public:
 
 	inline SimpleVector2D operator * (const SimpleVector2D & p_source) const
 	{
-		return SimpleVector2D(*this)*p_source;
+		return SimpleVector2D(m_x * p_source.m_x,m_y * p_source.m_y);
 	}
 
 	inline SimpleVector2D & operator *= (const SimpleVector2D & p_source)
