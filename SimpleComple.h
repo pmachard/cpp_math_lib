@@ -1,39 +1,79 @@
 #pragma once
+
 #include "math.h"
+
 namespace prj {
 namespace math {
 class SimpleComplex
 {
-  private:
-    double real, imag;
-  public:
-  complex(double re = 0, double im = 0);
-  ~complex();
-  double getReal();
-  double getImag();
-  void setReal(double re = 0);
-  void setImag(double im = 0);
-  complex operator+(const complex&) const;
-  complex operator-(const complex&) const;
-  complex operator*(const complex&) const;
-  complex operator/(const complex&) const;
-  complex& operator=(const double);
-  complex& operator+=(const complex&);
-  complex& operator-=(const complex&);
-  complex& operator*=(const complex&);
-  complex& operator/=(const complex&);
-  bool operator==(const complex&) const;
-  bool operator!=(const complex&) const;
-  double modulus(const complex&);
-  double coupling(const complex&);
-  double argumentOfAComplexNumber();
-  friend double fabs(complex &);
-  friend ostream& operator<<(ostream&, const complex&);
-  friend istream& operator>>(istream&, complex&);
-  friend complex operator+(const double&, const complex&);
-  friend complex operator-(const double&, const complex&);
-  friend complex operator*(const double&, const complex&);
-  friend complex operator/(const double&, const complex&);
+private:
+      double m_real;
+      double m_imag;
+public:
+  inline SimpleComplex(void) : m_real(0.0), m_imag(0.0)  {}
+  inline SimpleComplex(double real, double imag) : m_real(real), m_imag(imag)  {}
+  inline SimpleComplex(const double & source)
+  {
+    m_real = source.m_real;
+    m_imag = source.m_imag;
+  }
+
+  inline SimpleComplex & operator=(const double & source)
+  {
+    m_real = source.m_real;
+    m_imag = source.m_imag;
+    return (*this);
+  }
+  
+  inline const double & GetReal(void) const { return m_real;};
+  inline const double & GetImag(void) const { return m_imag;};
+  inline void SetReal(const double & value) { m_real = value;};
+  inline void SetImag(const double & value) { m_imag = value;};
+
+  inline SimpleComplex & operator+=(const SimpleComplex & source)
+  {
+    m_real += source.m_real;
+    m_imag += source.m_imag;
+    return (*this);
+  }
+  
+  inline SimpleComplex operator+(const SimpleComplex & source) const
+  {
+    return SimpleComplex(m_real + source.m_real, m_imag + source.m_imag);
+  }
+
+  inline SimpleComplex & operator-=(const SimpleComplex & source)
+  {
+    m_real -= source.m_real;
+    m_imag -= source.m_imag;
+    return (*this);
+  }
+  
+  inline SimpleComplex operator-(const SimpleComplex & source) const
+  {
+    return SimpleComplex(m_real - source.m_real, m_imag - source.m_imag);
+  }
+
+  inline SimpleComplex & operator*=(const SimpleComplex & source)
+  {
+    m_real *= source.m_real;
+    m_imag *= source.m_imag;
+    return (*this);
+  }
+  
+  inline SimpleComplex operator*(const SimpleComplex & source) const
+  {
+    return SimpleComplex(m_real * source.m_real, m_imag * source.m_imag);
+  }
+
+  inline bool operator==(const SimpleComplex & source) const
+  {
+    return (m_real == source.m_real) && (m_imag == source.m_imag);
+  }
+  inline bool operator!=(const SimpleComplex & source) const;
+  {
+    return !(this->operator==(source));
+  }
   };
 }
 }
