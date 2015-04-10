@@ -4,20 +4,36 @@
 
 namespace prj {
 namespace math {
+	
+/// A vector of double (x,y).
 class SimpleVector2D
 {
 private:
+	/// The x component.
 	double m_x;
+	/// The y component.
 	double m_y;
 public:
+	/// A default constructor.
+	/// @brief x and y are set with 0.0
 	inline SimpleVector2D(void) : m_x(0.0), m_y(0.0) {}
+	
+	/// A constructor with parameter.
+	/// @param p_x x value
+	/// @param p_y y value
 	inline SimpleVector2D(const double & p_x, const double & p_y) : m_x(p_x), m_y(p_y) {}
+	
+	/// A copy constructor.
+	/// @param p_source the copy source
 	inline SimpleVector2D(const SimpleVector2D & p_source)
 	{
 		m_x = p_source.m_x;
 		m_y = p_source.m_y;
 	}
 	
+	/// A affection operator.
+	/// @param p_source the copy source
+	/// @return the object with new value
 	inline SimpleVector2D & operator = (const SimpleVector2D & p_source)
 	{
 		m_x = p_source.m_x;
