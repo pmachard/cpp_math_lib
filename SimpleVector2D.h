@@ -62,9 +62,9 @@ public:
 		return SimpleVector2D(fabs(m_x),fabs(m_y));
 	}
 
-	/// Operator += incrent vector with another vector (xa,ya)+(xb,yb) = (xa+xb,ya+yb)
-	/// @param vector used to increment 
-	/// @result the vector result of +=
+	/// Operator += increment vector with another vector 
+	/// @param vector to use for additional operation
+	/// @result (xa,ya)+=(xb,yb) => (xa+=xb,ya+=yb)
 	inline SimpleVector2D & operator += (const SimpleVector2D & p_source)
 	{
 		m_x += p_source.m_x;
@@ -72,11 +72,17 @@ public:
 		return (*this);
 	}
 
+	/// Operator + adds two vectors
+	/// @param vector to use for additional operation
+	/// @return (xa,ya)+(xb,yb) = (xa+xb,ya+yb)
 	inline SimpleVector2D operator + (const SimpleVector2D & p_source) const
 	{
 		return SimpleVector2D(m_x + p_source.m_x,m_y + p_source.m_y);
 	}
 
+	/// Operator += decrement vector with another vector 
+	/// @param vector to use for sustraction operation
+	/// @result (xa,ya)-=(xb,yb) => (xa-=xb,ya-=yb)
 	inline SimpleVector2D & operator -= (const SimpleVector2D & p_source)
 	{
 		m_x -= p_source.m_x;
@@ -84,6 +90,9 @@ public:
 		return (*this);
 	}
 
+	/// Operator + subb two vectors
+	/// @param vector to use for sustraction operation
+	/// @return (xa,ya)-(xb,yb) = (xa-xb,ya-yb)
 	inline SimpleVector2D operator - (const SimpleVector2D & p_source) const
 	{
 		return SimpleVector2D(m_x - p_source.m_x,m_y - p_source.m_y);
