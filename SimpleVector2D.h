@@ -32,7 +32,7 @@ public:
 	}
 	
 	/// A affection operator.
-	/// @param p_source the copy source
+	/// @param p_source the affectation source
 	/// @return the object with new value
 	inline SimpleVector2D & operator = (const SimpleVector2D & p_source)
 	{
@@ -41,16 +41,30 @@ public:
 		return (*this);
 	}
 	
+	/// A field x accessor.
+	/// @return x value
 	inline const double & GetX(void) const  { return m_x; }
+	/// Set the field x.
+	/// @param value the value set to x
+	inline void SetX(const double & value) { m_x = value; }
+	
+	/// A field y accessor.
+	/// @return y value
 	inline const double & GetY(void)const  { return m_y; }
-	inline void SetX(const double & p_value) { m_x = p_value; }
-	inline void SetY(const double & p_value) { m_y = p_value; }
+	/// Set the field y.
+	/// @param value the value set to y
+	inline void SetY(const double & value) { m_y = value; }
 
+	/// Compute the abslute vector 2d abs(x,y) = (abs(x),abs(y)). 
+	/// @result the result vector 
 	inline SimpleVector2D abs (void) const
 	{
 		return SimpleVector2D(fabs(m_x),fabs(m_y));
 	}
 
+	/// Operator += incrent vector with another vector (xa,ya)+(xb,yb) = (xa+xb,ya+yb)
+	/// @param vector used to increment 
+	/// @result the vector result of +=
 	inline SimpleVector2D & operator += (const SimpleVector2D & p_source)
 	{
 		m_x += p_source.m_x;
