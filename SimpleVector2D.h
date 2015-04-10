@@ -99,7 +99,7 @@ public:
 	}
 
 	/// Operator *= multiplication one vector and a double
-	/// @param diouble to use for multiplication operation
+	/// @param double to use for multiplication operation
 	/// @return (x,y)*m => (x*=m,y*=m)
 	inline SimpleVector2D & operator *= (const double & p_value)
 	{
@@ -109,13 +109,16 @@ public:
 	}
 	
 	/// Operator * multiplication one vector and a double
-	/// @param diouble to use for multiplication operation
+	/// @param double to use for multiplication operation
 	/// @return (x,y)*m = (x*m,y*m)
 	inline SimpleVector2D operator * (const double & p_value) const
 	{
 		return SimpleVector2D(m_x*p_value, m_y*p_value);
 	}
 
+	/// Operator /= disision one vector and a double
+	/// @param double to use for division operation
+	/// @return (x,y)/m => (x/=m,y/=m)
 	inline SimpleVector2D & operator /= (const double & p_value)
 	{
 		if (p_value == 0.0)
@@ -125,6 +128,9 @@ public:
 		return (*this);
 	}
 	
+	/// Operator / disision one vector and a double
+	/// @param double to use for disision operation
+	/// @return (x,y)/m = (x/m,y/m)
 	inline SimpleVector2D operator / (const double & p_value) const
 	{
 		if (p_value == 0.0)
@@ -132,11 +138,17 @@ public:
 		return SimpleVector2D(m_x / p_value, m_y / p_value);
 	}
 
+	/// Operator * multiplication two vectors 
+	/// @param SimpleVector2D to use for multiplication operation
+	/// @return (xa,ya)*(xb,yb) = (xa*xb,ya*yb)
 	inline SimpleVector2D operator * (const SimpleVector2D & p_source) const
 	{
 		return SimpleVector2D(m_x * p_source.m_x,m_y * p_source.m_y);
 	}
 
+	/// Operator * multiplication two vectors 
+	/// @param SimpleVector2D to use for multiplication operation
+	/// @return (xa,ya)*(xb,yb) = (xa*=xb,ya*=yb)
 	inline SimpleVector2D & operator *= (const SimpleVector2D & p_source)
 	{
 		m_x *= p_source.m_x;
@@ -144,16 +156,25 @@ public:
 		return (*this);
 	}
 
-	inline double  operator ^ (const SimpleVector2D & p_source) const
+	/// Operator ^ scalar product
+	/// @param SimpleVector2D to use for scalar operation
+	/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
+	inline double operator ^ (const SimpleVector2D & p_source) const
 	{
 		return (m_x * p_source.m_y) - (m_y * p_source.m_x);
 	}
 
+	/// Operator equality check exact value
+	/// @param SimpleVector2D to use for comparison
+	/// @return double (xa,ya) == (xb,yb) = (xa == xb) and  (ya == yb)
 	inline bool operator == (const SimpleVector2D & p_source)
 	{
 		return ((m_x == p_source.m_x) && (m_y == p_source.m_y));
 	}
 
+	/// Operator not equal check exact value
+	/// @param SimpleVector2D to use for comparison
+	/// @return double (xa,ya) != (xb,yb) = (xa != xb) or (ya != yb)
 	inline bool operator != (const SimpleVector2D & p_source)
 	{
 		return !this->operator == (p_source);
