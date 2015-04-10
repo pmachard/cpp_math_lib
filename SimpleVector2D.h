@@ -80,7 +80,7 @@ public:
 		return SimpleVector2D(m_x + p_source.m_x,m_y + p_source.m_y);
 	}
 
-	/// Operator += decrement vector with another vector 
+	/// Operator -= decrement vector with another vector 
 	/// @param vector to use for sustraction operation
 	/// @result (xa,ya)-=(xb,yb) => (xa-=xb,ya-=yb)
 	inline SimpleVector2D & operator -= (const SimpleVector2D & p_source)
@@ -98,23 +98,22 @@ public:
 		return SimpleVector2D(m_x - p_source.m_x,m_y - p_source.m_y);
 	}
 
-	inline SimpleVector2D operator * (const double & p_value) const
-	{
-		return SimpleVector2D(m_x*p_value, m_y*p_value);
-	}
-
+	/// Operator *= multiplication one vector and a double
+	/// @param diouble to use for multiplication operation
+	/// @return (x,y)*m => (x*=m,y*=m)
 	inline SimpleVector2D & operator *= (const double & p_value)
 	{
 		m_x *= p_value;
 		m_y *= p_value;
 		return (*this);
 	}
-
-	inline SimpleVector2D operator / (const double & p_value) const
+	
+	/// Operator * multiplication one vector and a double
+	/// @param diouble to use for multiplication operation
+	/// @return (x,y)*m = (x*m,y*m)
+	inline SimpleVector2D operator * (const double & p_value) const
 	{
-		if (p_value == 0.0)
-			throw;
-		return SimpleVector2D(m_x / p_value, m_y / p_value);
+		return SimpleVector2D(m_x*p_value, m_y*p_value);
 	}
 
 	inline SimpleVector2D & operator /= (const double & p_value)
@@ -124,6 +123,13 @@ public:
 		m_x /= p_value;
 		m_y /= p_value;
 		return (*this);
+	}
+	
+	inline SimpleVector2D operator / (const double & p_value) const
+	{
+		if (p_value == 0.0)
+			throw;
+		return SimpleVector2D(m_x / p_value, m_y / p_value);
 	}
 
 	inline SimpleVector2D operator * (const SimpleVector2D & p_source) const
