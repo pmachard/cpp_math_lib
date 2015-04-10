@@ -104,13 +104,16 @@ public:
 	}
 	
 	/// Operator - sustraction vector with another vector
-	/// @param vector to use for sustraction operation
+	/// @param vector to use to sustraction operation
 	/// @result (xa,ya,za)-(xb,yb,zb) => (xa-xb,ya-yb,za-zb)
 	inline SimpleVector3D operator - (const SimpleVector3D & p_source) const
 	{
 		return p_source - (*this);
 	}
 	
+	/// Operator *= multiplication vector with double value
+	/// @param value to use to make the multiplication 
+	/// @result (xa,ya,za)*=m => (xa*=m,ya*=m,za*=m)
 	inline SimpleVector2D & operator *= (const double & p_value)
 	{
 		m_x *= p_value;
@@ -119,11 +122,17 @@ public:
 		return (*this);
 	}
 	
+	/// Operator * multiplication vector with double value
+	/// @param value to use to make the multiplication 
+	/// @result (xa,ya,za)*m => (xa*m,ya*m,za*m)
 	inline SimpleVector3D operator * (const double & p_value) const
 	{
 		return SimpleVector3D(m_x*p_value, m_y*p_value, m_z*p_value);
 	}
 	
+	/// Operator /= division vector with double value
+	/// @param value to use to make the division 
+	/// @result (xa,ya,za)/=m => (xa/=m,ya/=m,za/=m)
 	inline SimpleVector3D & operator /= (const double & p_value)
 	{
 		if (p_value == 0.0)
@@ -134,6 +143,9 @@ public:
 		return (*this);
 	}
 	
+	/// Operator / division vector with double value
+	/// @param value to use to make the division 
+	/// @result (xa,ya,za)/=m => (xa/m,ya/m,za/m)
 	inline SimpleVector3D operator / (const double & p_value) const
 	{
 		if (p_value == 0.0)
@@ -141,11 +153,17 @@ public:
 		return SimpleVector3D(m_x / p_value, m_y / p_value, m_z / p_value);
 	}
 	
+	/// Operator * multiplication with two vectors
+	/// @param vector to use to make the multiplication 
+	/// @result (xa,ya,za)*(xb,yb,zb) => (xa*xb,ya*yb,za*zb)
 	inline SimpleVector3D operator * (const SimpleVector3D & p_source) const
 	{
 		return SimpleVector3D(*this)*p_source;
 	}
 	
+	/// Operator *= multiplication with two vectors
+	/// @param vector to use to make the multiplication 
+	/// @result (xa,ya,za)*=(xb,yb,zb) => (xa*=xb,ya*=yb,za*=zb)
 	inline SimpleVector2D & operator *= (const SimpleVector2D & p_source)
 	{
 		m_x *= p_source.m_x;
@@ -154,16 +172,26 @@ public:
 		return (*this);
 	}
 	
+	/// Operator ^ scalar product
+	/// @param vector to use for scalar operation
+	/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
 	inline double operator ^ (const SimpleVector3D & p_source) const
 	{
 		return (m_x * p_source.m_y) - (m_y * p_source.m_x);
 	}
 	
+
+	/// Operator equality check exact value
+	/// @param source to use for comparison
+	/// @return double (xa,ya,za) == (xb,yb,zb) = (xa == xb) and (ya == yb) and (za == zb)
 	inline bool operator == (const SimpleVector3D & p_source)
 	{
 		return ((m_x == p_source.m_x) && (m_y == p_source.m_y) && (m_z == p_source.m_z));
 	}
-	
+
+	/// Operator not equal check exact value
+	/// @param source to use for comparison
+	/// @return double (xa,ya,za) != (xb,yb,za) = (xa != xb) or (ya != yb) or (za != zb)		
 	inline bool operator != (const SimpleVector3D & p_source)
 	{
 		return !this->operator == (p_source);
