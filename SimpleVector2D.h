@@ -5,7 +5,7 @@
 namespace prj {
 namespace math {
 	
-/// A vector of double (x,y).
+/// @class mathematical vector with double (x,y).
 class SimpleVector2D
 {
 private:
