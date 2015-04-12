@@ -203,9 +203,9 @@ public:
 	
  	static SimpleVector3D Cross(const SimpleVector3D & vectorA, const SimpleVector3D & vectorB)
  	{
- 		return SimpleVector3D (vectorA.y * vectorB.z - vectorA.z * vectorB.y,
- 		vectorA.z * vectorB.x - vectorA.x * vectorB.z,
- 		vectorA.x * vectorB.y - vectorA.y * vectorB.x);			
+ 		return SimpleVector3D (vectorA.m_y * vectorB.m_z - vectorA.m_z * vectorB.m_y,
+ 		vectorA.m_z * vectorB.m_x - vectorA.m_x * vectorB.m_z,
+ 		vectorA.m_x * vectorB.m_y - vectorA.m_y * vectorB.m_x);
  	}
 };
 }

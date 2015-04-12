@@ -18,7 +18,7 @@ public:
     m_imag = source.m_imag;
   }
 
-  inline Complex & operator=(const double & source)
+  inline Complex & operator=(const Complex & source)
   {
     m_real = source.m_real;
     m_imag = source.m_imag;
@@ -71,7 +71,7 @@ public:
     return (m_real == source.m_real) && (m_imag == source.m_imag);
   }
   
-  inline bool operator!=(const Complex & source) const;
+  inline bool operator!=(const Complex & source) const
   {
     return !(this->operator==(source));
   }

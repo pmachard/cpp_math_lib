@@ -135,7 +135,7 @@ public:
 	{
 		if (value == 0.0)
 			throw;
-		return SimpleVector2D(m_x / p_value, m_y / p_value);
+		return SimpleVector2D(m_x / value, m_y / value);
 	}
 
 	/// Operator * multiplication two vectors 
