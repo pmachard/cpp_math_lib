@@ -184,6 +184,34 @@ public:
 	{
 		return m_x * m_x + m_y * m_y;
 	}
+	
+	/// Method to make a vector with specific coor handle
+	/// @return double (x,y).MakeXY => (x,y)
+	inline SimpleVector2D MakeXY(void)
+	{
+		return SimpleVector2D(m_x,m_y)
+	}
+	
+	/// Method to make a vector with specific coor handle
+	/// @return double (x,y).MakeXX => (x,x)
+	inline SimpleVector2D MakeXX(void)
+	{
+		return SimpleVector2D(m_x,m_x)
+	}
+
+	/// Method to make a vector with specific coor handle
+	/// @return double (x,y).MakeYX => (y,x)
+	inline SimpleVector2D MakeYX(void)
+	{
+		return SimpleVector2D(m_y,m_x)
+	}
+	
+	/// Method to make a vector with specific coor handle
+	/// @return double (x,y).MakeYY => (y,y)
+	inline SimpleVector2D MakeYY(void)
+	{
+		return SimpleVector2D(m_y,m_y)
+	}
 };
 }
 }
