@@ -207,6 +207,55 @@ public:
  		vectorA.m_z * vectorB.m_x - vectorA.m_x * vectorB.m_z,
  		vectorA.m_x * vectorB.m_y - vectorA.m_y * vectorB.m_x);
  	}
+ 	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeXYZ => (x,y,z)
+	inline SimpleVector3D MakeXYZ(void)
+	{
+		return SimpleVector3D(m_x,m_y,m_z)
+	} 	
+
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeXXX => (x,x,x)
+	inline SimpleVector3D MakeXXX(void)
+	{
+		return SimpleVector3D(m_x,m_x,m_x)
+	} 	
+ 	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeYYY => (y,y,y)
+	inline SimpleVector3D MakeYYY(void)
+	{
+		return SimpleVector3D(m_y,m_y,m_y)
+	} 	
+ 	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeZZZ => (z,z,z)
+	inline SimpleVector3D MakeYYY(void)
+	{
+		return SimpleVector3D(m_z,m_z,m_z)
+	} 	
+ 	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeYZX => (y,z,x)
+	inline SimpleVector3D MakeYZX(void)
+	{
+		return SimpleVector3D(m_y,m_z,m_x)
+	} 	
+	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeZXY => (z,x,y)
+	inline SimpleVector3D MakeZXY(void)
+	{
+		return SimpleVector3D(m_z,m_x,m_y)
+	} 	
+	/// Method to make a vector with specific coord handle
+	/// @return double (x,y,z).MakeZYX => (z,y,x)
+	inline SimpleVector3D MakeZYX(void)
+	{
+		return SimpleVector3D(m_z,m_y,m_x)
+	} 	
+	
 };
 }
 }
