@@ -21,8 +21,7 @@ public:
 	/// A constructor with parameter.
 	/// @param x value
 	/// @param y value	
-	inline SimpleVector3D(const double & x, const double & y, const double & z) : m_x(x), m_y(y), m_z(z) 
-	{}
+	inline SimpleVector3D(const double & x, const double & y, const double & z) : m_x(x), m_y(y), m_z(z) {}
 	
 	/// A copy constructor.
 	/// @param source the copy source
@@ -67,10 +66,7 @@ public:
 	
 	/// Compute the abslute vector 3d 
 	/// @result the result vector abs(x,y,z) = (abs(x),abs(y),abs(z))
-	inline SimpleVector3D abs (void) const
-	{
-		return SimpleVector3D(fabs(m_x),fabs(m_y),fabs(m_z));
-	}
+	inline SimpleVector3D abs (void) const { return SimpleVector3D(fabs(m_x),fabs(m_y),fabs(m_z)); }
 	
 	/// Operator += increment vector with another vector
 	/// @param vector to use for additional operation
@@ -86,10 +82,7 @@ public:
 	/// Operator + add vector with another vector
 	/// @param vector to use for additional operation
 	/// @result (xa,ya,za)+(xb,yb,zb) => (xa+xb,ya+yb,za+zb)
-	inline SimpleVector3D operator + (const SimpleVector3D & source) const
-	{
-		return SimpleVector3D(m_x + source.m_x, m_y + source.m_y, m_z + source.m_z);
-	}
+	inline SimpleVector3D operator + (const SimpleVector3D & source) const { return SimpleVector3D(m_x + source.m_x, m_y + source.m_y, m_z + source.m_z); }
 	
 	/// Operator += decrement vector with another vector
 	/// @param vector to use for sustration operation
@@ -105,10 +98,7 @@ public:
 	/// Operator - sustraction vector with another vector
 	/// @param vector to use to sustraction operation
 	/// @result (xa,ya,za)-(xb,yb,zb) => (xa-xb,ya-yb,za-zb)
-	inline SimpleVector3D operator - (const SimpleVector3D & source) const
-	{
-		return SimpleVector3D(m_x - source.m_x, m_y - source.m_y, m_z - source.m_z);
-	}
+	inline SimpleVector3D operator - (const SimpleVector3D & source) const { return SimpleVector3D(m_x - source.m_x, m_y - source.m_y, m_z - source.m_z); }
 	
 	/// Operator *= multiplication vector with double value
 	/// @param value to use to make the multiplication 
@@ -124,10 +114,7 @@ public:
 	/// Operator * multiplication vector with double value
 	/// @param value to use to make the multiplication 
 	/// @result (xa,ya,za)*m => (xa*m,ya*m,za*m)
-	inline SimpleVector3D operator * (const double & value) const
-	{
-		return SimpleVector3D(m_x * value, m_y * value, m_z * value);
-	}
+	inline SimpleVector3D operator * (const double & value) const { return SimpleVector3D(m_x * value, m_y * value, m_z * value); }
 	
 	/// Operator /= division vector with double value
 	/// @param value to use to make the division 
@@ -155,10 +142,7 @@ public:
 	/// Operator * multiplication with two vectors
 	/// @param vector to use to make the multiplication 
 	/// @result (xa,ya,za)*(xb,yb,zb) => (xa*xb,ya*yb,za*zb)
-	inline SimpleVector3D operator * (const SimpleVector3D & source) const
-	{
-		return SimpleVector3D(m_x * source.m_x, m_y * source.m_y, m_z * source.m_z);
-	}
+	inline SimpleVector3D operator * (const SimpleVector3D & source) const { return SimpleVector3D(m_x * source.m_x, m_y * source.m_y, m_z * source.m_z); }
 	
 	/// Operator *= multiplication with two vectors
 	/// @param vector to use to make the multiplication 
@@ -174,32 +158,19 @@ public:
 	/// Operator ^ scalar product
 	/// @param vector to use for scalar operation
 	/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
-	inline double operator ^ (const SimpleVector3D & source) const
-	{
-		return (m_x * source.m_y) - (m_y * source.m_x);
-	}
+	inline double operator ^ (const SimpleVector3D & source) const { return (m_x * source.m_y) - (m_y * source.m_x); }
 	
-
 	/// Operator equality check exact value
 	/// @param source to use for comparison
 	/// @return double (xa,ya,za) == (xb,yb,zb) = (xa == xb) and (ya == yb) and (za == zb)
-	inline bool operator == (const SimpleVector3D & source)
-	{
-		return ((m_x == source.m_x) && (m_y == source.m_y) && (m_z == source.m_z));
-	}
+	inline bool operator == (const SimpleVector3D & source) { return ((m_x == source.m_x) && (m_y == source.m_y) && (m_z == source.m_z)); }
 
 	/// Operator not equal check exact value
 	/// @param source to use for comparison
 	/// @return double (xa,ya,za) != (xb,yb,za) = (xa != xb) or (ya != yb) or (za != zb)		
-	inline bool operator != (const SimpleVector3D & source)
-	{
-		return !this->operator == (source);
-	}
+	inline bool operator != (const SimpleVector3D & source)	{ return !this->operator == (source); }
 	
-	inline double LengthSquared (void)
-	{
-		return m_x * m_x + m_y * m_y + m_z * m_z;
-	}
+	inline double LengthSquared (void) { return m_x * m_x + m_y * m_y + m_z * m_z; }
 	
  	static SimpleVector3D Cross(const SimpleVector3D & vectorA, const SimpleVector3D & vectorB)
  	{
@@ -210,51 +181,13 @@ public:
  	
 	/// Method to make a vector with specific coord handle
 	/// @return double (x,y,z).MakeXYZ => (x,y,z)
-	inline SimpleVector3D MakeXYZ(void)
-	{
-		return SimpleVector3D(m_x,m_y,m_z)
-	} 	
-
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeXXX => (x,x,x)
-	inline SimpleVector3D MakeXXX(void)
-	{
-		return SimpleVector3D(m_x,m_x,m_x)
-	} 	
- 	
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeYYY => (y,y,y)
-	inline SimpleVector3D MakeYYY(void)
-	{
-		return SimpleVector3D(m_y,m_y,m_y)
-	} 	
- 	
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeZZZ => (z,z,z)
-	inline SimpleVector3D MakeYYY(void)
-	{
-		return SimpleVector3D(m_z,m_z,m_z)
-	} 	
- 	
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeYZX => (y,z,x)
-	inline SimpleVector3D MakeYZX(void)
-	{
-		return SimpleVector3D(m_y,m_z,m_x)
-	} 	
-	
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeZXY => (z,x,y)
-	inline SimpleVector3D MakeZXY(void)
-	{
-		return SimpleVector3D(m_z,m_x,m_y)
-	} 	
-	/// Method to make a vector with specific coord handle
-	/// @return double (x,y,z).MakeZYX => (z,y,x)
-	inline SimpleVector3D MakeZYX(void)
-	{
-		return SimpleVector3D(m_z,m_y,m_x)
-	} 	
+	inline SimpleVector3D MakeXYZ(void) { return SimpleVector3D(m_x,m_y,m_z) } 	
+	inline SimpleVector3D MakeXXX(void) { return SimpleVector3D(m_x,m_x,m_x) } 	
+	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_y,m_y,m_y) } 	
+	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_z,m_z,m_z) } 	
+	inline SimpleVector3D MakeYZX(void) { return SimpleVector3D(m_y,m_z,m_x) } 	
+	inline SimpleVector3D MakeZXY(void) { return SimpleVector3D(m_z,m_x,m_y) } 	
+	inline SimpleVector3D MakeZYX(void) { return SimpleVector3D(m_z,m_y,m_x) } 	
 	
 };
 }
