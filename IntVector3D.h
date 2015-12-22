@@ -189,6 +189,14 @@ public:
 	inline IntVector3D MakeZXY(void) { return IntVector3D(m_z,m_x,m_y) } 	
 	inline IntVector3D MakeZYX(void) { return IntVector3D(m_z,m_y,m_x) } 	
 	
+	inline IntVector2D MakeXY(void) { return IntVector2D(m_x,m_y) } 	
+	inline IntVector2D MakeYX(void) { return IntVector2D(m_y,m_x) } 	
+	inline IntVector2D MakeXZ(void) { return IntVector2D(m_x,m_z) } 	
+	inline IntVector2D MakeZX(void) { return IntVector2D(m_z,m_x) } 	
+	inline IntVector2D MakeYZ(void) { return IntVector2D(m_y,m_z) } 	
+	inline IntVector2D MakeZY(void) { return IntVector2D(m_z,m_y) } 	
+	
+	
 };
 }
 }
