@@ -14,9 +14,7 @@ namespace prj {
 			/// @brief all data is create with default constructor
 			inline Matrix3x3<T>(void)
 			{
-				m_Data[0] = T();	m_Data[1] = T();	m_Data[2] = T();
-				m_Data[3] = T();	m_Data[4] = T();	m_Data[5] = T();
-				m_Data[6] = T();	m_Data[7] = T();	m_Data[8] = T();
+				Reset();
 			}
 
 			/// constructor with uniq value.
@@ -47,6 +45,41 @@ namespace prj {
 				m_Data[3] = paramSource.m_Data[3];	m_Data[4] = paramSource.m_Data[4];	m_Data[5] = paramSource.m_Data[5];
 				m_Data[6] = paramSource.m_Data[6];	m_Data[7] = paramSource.m_Data[7];	m_Data[8] = paramSource.m_Data[8];
 			}
+			inline T & operator[] (unsigned int paramPos)
+			{
+				if (paramPos >= 9)
+					throw std::logic_error("bad index");
+				return m_Data[paramPos];
+			}
+
+			inline const T & operator[] (unsigned int paramPos) const
+			{
+				if (paramPos >= 9)
+					throw std::logic_error("bad index");
+				return m_Data[paramPos];
+			}
+
+			inline T& operator() (unsigned int paramPosL, unsigned int paramPosC)
+			{
+				if (paramPosL >= 3 || paramPosC >= 3)
+					throw std::logic_error("bad index");
+				return m[3 * paramPosL + paramPosC];
+			}
+
+			inline const T & operator() (unsigned int paramPosL, unsigned int paramPosC) const
+			{
+				if (paramPosL >= 3 || paramPosC >= 3)
+					throw std::logic_error("bad index");
+				return m[3 * paramPosL + paramPosC];
+			}
+
+			inline void Reset()
+			{
+				m_Data[0] = T();	m_Data[1] = T();	m_Data[2] = T();
+				m_Data[3] = T();	m_Data[4] = T();	m_Data[5] = T();
+				m_Data[6] = T();	m_Data[7] = T();	m_Data[8] = T();
+			}
+			
 		};
 	}
 }
