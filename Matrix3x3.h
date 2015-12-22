@@ -80,6 +80,56 @@ namespace prj {
 				m_Data[6] = T();	m_Data[7] = T();	m_Data[8] = T();
 			}
 			
+			inline void SetIdentity()
+			{
+				m_Data[0] = T(1);	m_Data[1] = T();	m_Data[2] = T();
+				m_Data[3] = T();	m_Data[4] = T(1);	m_Data[5] = T();
+				m_Data[6] = T();	m_Data[7] = T();	m_Data[8] = T(1);
+			}
+
+			Matrix3x3<T> & operator+=(const Matrix3x3<T> & paramSource)
+			{
+				m_Data[0] += paramSource.m_Data[0];
+				m_Data[1] += paramSource.m_Data[1];
+				m_Data[2] += paramSource.m_Data[2];
+				m_Data[3] += paramSource.m_Data[3];
+				m_Data[4] += paramSource.m_Data[4];
+				m_Data[5] += paramSource.m_Data[5];
+				m_Data[6] += paramSource.m_Data[6];
+				m_Data[7] += paramSource.m_Data[7];
+				m_Data[8] += paramSource.m_Data[8];
+
+				return (*this);
+			}
+
+			Matrix3x3<T> operator+(const Matrix3x3<T> & paramSource) const
+			{
+				return Matrix3x3<T>(m_Data[0] + paramSource.m_Data[0], m_Data[1] + paramSource.m_Data[1], m_Data[2] + paramSource.m_Data[2],
+					m_Data[3] + paramSource.m_Data[3], m_Data[4] + paramSource.m_Data[4], m_Data[5] + paramSource.m_Data[5],
+					m_Data[6] + paramSource.m_Data[6], m_Data[7] + paramSource.m_Data[7], m_Data[8] + paramSource.m_Data[8]);
+			}
+
+			Matrix3x3<T> & operator-=(const Matrix3x3<T> & paramSource)
+			{
+				m_Data[0] -= paramSource.m_Data[0];
+				m_Data[1] -= paramSource.m_Data[1];
+				m_Data[2] -= paramSource.m_Data[2];
+				m_Data[3] -= paramSource.m_Data[3];
+				m_Data[4] -= paramSource.m_Data[4];
+				m_Data[5] -= paramSource.m_Data[5];
+				m_Data[6] -= paramSource.m_Data[6];
+				m_Data[7] -= paramSource.m_Data[7];
+				m_Data[8] -= paramSource.m_Data[8];
+
+				return (*this);
+			}
+
+			Matrix3x3<T> operator-(const Matrix3x3<T> & paramSource) const
+			{
+				return Matrix3x3<T>(m_Data[0] - paramSource.m_Data[0], m_Data[1] - paramSource.m_Data[1], m_Data[2] - paramSource.m_Data[2],
+					m_Data[3] - paramSource.m_Data[3], m_Data[4] - paramSource.m_Data[4], m_Data[5] - paramSource.m_Data[5],
+					m_Data[6] - paramSource.m_Data[6], m_Data[7] - paramSource.m_Data[7], m_Data[8] - paramSource.m_Data[8]);
+			}
 		};
 	}
 }
