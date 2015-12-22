@@ -147,7 +147,7 @@ public:
 	/// Operator *= multiplication with two vectors
 	/// @param vector to use to make the multiplication 
 	/// @result (xa,ya,za)*=(xb,yb,zb) => (xa*=xb,ya*=yb,za*=zb)
-	inline SimpleVector2D & operator *= (const SimpleVector2D & source)
+	inline SimpleVector3D & operator *= (const SimpleVector3D & source)
 	{
 		m_x *= source.m_x;
 		m_y *= source.m_y;
@@ -181,22 +181,20 @@ public:
  	
 	/// Method to make a vector with specific coord handle
 	/// @return double (x,y,z).MakeXYZ => (x,y,z)
-	inline SimpleVector3D MakeXYZ(void) { return SimpleVector3D(m_x,m_y,m_z) } 	
-	inline SimpleVector3D MakeXXX(void) { return SimpleVector3D(m_x,m_x,m_x) } 	
-	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_y,m_y,m_y) } 	
-	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_z,m_z,m_z) } 	
-	inline SimpleVector3D MakeYZX(void) { return SimpleVector3D(m_y,m_z,m_x) } 	
-	inline SimpleVector3D MakeZXY(void) { return SimpleVector3D(m_z,m_x,m_y) } 	
-	inline SimpleVector3D MakeZYX(void) { return SimpleVector3D(m_z,m_y,m_x) } 
+	inline SimpleVector3D MakeXYZ(void) { return SimpleVector3D(m_x,m_y,m_z); } 	
+	inline SimpleVector3D MakeXXX(void) { return SimpleVector3D(m_x,m_x,m_x); } 	
+	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_y,m_y,m_y); } 	
+	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_z,m_z,m_z); } 	
+	inline SimpleVector3D MakeYZX(void) { return SimpleVector3D(m_y,m_z,m_x); } 	
+	inline SimpleVector3D MakeZXY(void) { return SimpleVector3D(m_z,m_x,m_y); } 	
+	inline SimpleVector3D MakeZYX(void) { return SimpleVector3D(m_z,m_y,m_x); } 
 	
-	inline SimpleVector3D MakeXY(void) { return SimpleVector3D(m_x,m_y) } 	
-	inline SimpleVector3D MakeYX(void) { return SimpleVector3D(m_y,m_x) } 	
-	inline SimpleVector3D MakeXZ(void) { return SimpleVector3D(m_x,m_z) } 	
-	inline SimpleVector3D MakeZX(void) { return SimpleVector3D(m_z,m_x) } 	
-	inline SimpleVector3D MakeYZ(void) { return SimpleVector3D(m_y,m_z) } 	
-	inline SimpleVector3D MakeZY(void) { return SimpleVector3D(m_z,m_y) } 	
-	
-	
+	inline SimpleVector2D MakeXY(void) { return SimpleVector2D(m_x,m_y); } 	
+	inline SimpleVector2D MakeYX(void) { return SimpleVector2D(m_y,m_x); } 	
+	inline SimpleVector2D MakeXZ(void) { return SimpleVector2D(m_x,m_z); } 	
+	inline SimpleVector2D MakeZX(void) { return SimpleVector2D(m_z,m_x); } 	
+	inline SimpleVector2D MakeYZ(void) { return SimpleVector2D(m_y,m_z); } 	
+	inline SimpleVector2D MakeZY(void) { return SimpleVector2D(m_z,m_y); } 	
 };
 }
 }
