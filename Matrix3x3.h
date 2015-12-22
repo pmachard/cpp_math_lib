@@ -19,11 +19,9 @@ namespace prj {
 
 			/// constructor with uniq value.
 			/// @brief all data is create with the same value
-			inline Matrix3x3<T>(T pramValue)
+			inline Matrix3x3<T>(T paramValue)
 			{
-				m_Data[0] = pramValue;	m_Data[1] = pramValue;	m_Data[2] = pramValue;
-				m_Data[3] = pramValue;	m_Data[4] = pramValue;	m_Data[5] = pramValue;
-				m_Data[6] = pramValue;	m_Data[7] = pramValue;	m_Data[8] = pramValue;
+				SetAllValue(paramValue);
 			}
 
 			/// constructor 
@@ -59,18 +57,18 @@ namespace prj {
 				return m_Data[paramPos];
 			}
 
-			inline T& operator() (unsigned int paramPosL, unsigned int paramPosC)
+			inline T & operator() (unsigned int paramPosL, unsigned int paramPosC)
 			{
 				if (paramPosL >= 3 || paramPosC >= 3)
 					throw std::logic_error("bad index");
-				return m[3 * paramPosL + paramPosC];
+				return m_Data[3 * paramPosL + paramPosC];
 			}
 
 			inline const T & operator() (unsigned int paramPosL, unsigned int paramPosC) const
 			{
 				if (paramPosL >= 3 || paramPosC >= 3)
 					throw std::logic_error("bad index");
-				return m[3 * paramPosL + paramPosC];
+				return m_Data[3 * paramPosL + paramPosC];
 			}
 
 			inline void Reset()
@@ -78,6 +76,19 @@ namespace prj {
 				m_Data[0] = T();	m_Data[1] = T();	m_Data[2] = T();
 				m_Data[3] = T();	m_Data[4] = T();	m_Data[5] = T();
 				m_Data[6] = T();	m_Data[7] = T();	m_Data[8] = T();
+			}
+			
+			void SetAllValue(T paramValue)
+			{
+				m_Data[0] = paramValue;
+				m_Data[1] = paramValue;
+				m_Data[2] = paramValue;
+				m_Data[3] = paramValue;
+				m_Data[4] = paramValue;
+				m_Data[5] = paramValue;
+				m_Data[6] = paramValue;
+				m_Data[7] = paramValue;
+				m_Data[8] = paramValue;
 			}
 			
 			inline void SetIdentity()
@@ -130,6 +141,21 @@ namespace prj {
 					m_Data[3] - paramSource.m_Data[3], m_Data[4] - paramSource.m_Data[4], m_Data[5] - paramSource.m_Data[5],
 					m_Data[6] - paramSource.m_Data[6], m_Data[7] - paramSource.m_Data[7], m_Data[8] - paramSource.m_Data[8]);
 			}
+			
+			Matrix3x3<T>  operator* (const Matrix3x3<T> & paramSourceconst)
+			{
+				return Matrix3x3<T>(
+				m_Data[0] * paramSource.m_Data[0] + m_Data[1] * paramSource.m_Data[3] + m_Data[2] * paramSource.m_Data[6],
+				m_Data[0] * paramSource.m_Data[1] + m_Data[1] * paramSource.m_Data[4] + m_Data[2] * paramSource.m_Data[7],
+				m_Data[0] * paramSource.m_Data[2] + m_Data[1] * paramSource.m_Data[5] + m_Data[2] * paramSource.m_Data[8],
+				m_Data[3] * paramSource.m_Data[0] + m_Data[4] * paramSource.m_Data[3] + m_Data[5] * paramSource.m_Data[6],
+				m_Data[3] * paramSource.m_Data[1] + m_Data[4] * paramSource.m_Data[4] + m_Data[5] * paramSource.m_Data[7],
+				m_Data[3] * paramSource.m_Data[2] + m_Data[4] * paramSource.m_Data[5] + m_Data[5] * paramSource.m_Data[8],
+				m_Data[6] * paramSource.m_Data[0] + m_Data[7] * paramSource.m_Data[3] + m_Data[8] * paramSource.m_Data[6],
+				m_Data[6] * paramSource.m_Data[1] + m_Data[7] * paramSource.m_Data[4] + m_Data[8] * paramSource.m_Data[7],
+				m_Data[6] * paramSource.m_Data[2] + m_Data[7] * paramSource.m_Data[5] + m_Data[8] * paramSource.m_Data[8])
+			}
+			
 		};
 	}
 }
