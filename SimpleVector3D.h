@@ -187,7 +187,15 @@ public:
 	inline SimpleVector3D MakeYYY(void) { return SimpleVector3D(m_z,m_z,m_z) } 	
 	inline SimpleVector3D MakeYZX(void) { return SimpleVector3D(m_y,m_z,m_x) } 	
 	inline SimpleVector3D MakeZXY(void) { return SimpleVector3D(m_z,m_x,m_y) } 	
-	inline SimpleVector3D MakeZYX(void) { return SimpleVector3D(m_z,m_y,m_x) } 	
+	inline SimpleVector3D MakeZYX(void) { return SimpleVector3D(m_z,m_y,m_x) } 
+	
+	inline SimpleVector3D MakeXY(void) { return SimpleVector3D(m_x,m_y) } 	
+	inline SimpleVector3D MakeYX(void) { return SimpleVector3D(m_y,m_x) } 	
+	inline SimpleVector3D MakeXZ(void) { return SimpleVector3D(m_x,m_z) } 	
+	inline SimpleVector3D MakeZX(void) { return SimpleVector3D(m_z,m_x) } 	
+	inline SimpleVector3D MakeYZ(void) { return SimpleVector3D(m_y,m_z) } 	
+	inline SimpleVector3D MakeZY(void) { return SimpleVector3D(m_z,m_y) } 	
+	
 	
 };
 }
