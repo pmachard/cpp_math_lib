@@ -189,28 +189,28 @@ public:
 	/// @return double (x,y).MakeXY => (x,y)
 	inline IntVector2D MakeXY(void)
 	{
-		return IntVector2D(m_x,m_y)
+		return IntVector2D(m_x,m_y);
 	}
 	
 	/// Method to make a vector with specific coor handle
 	/// @return double (x,y).MakeXX => (x,x)
 	inline IntVector2D MakeXX(void)
 	{
-		return IntVector2D(m_x,m_x)
+		return IntVector2D(m_x,m_x);
 	}
 
 	/// Method to make a vector with specific coor handle
 	/// @return double (x,y).MakeYX => (y,x)
 	inline IntVector2D MakeYX(void)
 	{
-		return IntVector2D(m_y,m_x)
+		return IntVector2D(m_y,m_x);
 	}
 	
 	/// Method to make a vector with specific coor handle
 	/// @return double (x,y).MakeYY => (y,y)
 	inline IntVector2D MakeYY(void)
 	{
-		return IntVector2D(m_y,m_y)
+		return IntVector2D(m_y,m_y);
 	}
 };
 }
