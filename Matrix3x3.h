@@ -188,6 +188,16 @@ namespace prj {
 				m_Data[Cel3x1], m_Data[Cel3x2], m_Data[Cel3x3])
 			}
 			
+			T Determ() const
+			{
+				return m_Data[Cel1x1] * m_Data[Cel2x2] * m_Data[Cel3x3]
+					+ m_Data[Cel1x2] * m_Data[Cel2x3] * m_Data[Cel3x1]
+					+ m_Data[Cel1x3] * m_Data[Cel2x1] * m_Data[Cel3x2]
+					- m_Data[Cel1x3] * m_Data[Cel2x2] * m_Data[Cel3x1]
+					- m_Data[Cel1x1] * m_Data[Cel2x3] * m_Data[Cel3x2]
+					- m_Data[Cel1x2] * m_Data[Cel2x1] * m_Data[Cel3x3];
+			}
+
 		};
 	}
 }
