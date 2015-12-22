@@ -12,13 +12,13 @@ namespace prj {
 			
 			const unsigned int Cel1x1 = 0;
 			const unsigned int Cel1x2 = 1;
-			const unsigned int Cel1x3 = 3;
-			const unsigned int Cel2x1 = 4;
-			const unsigned int Cel2x2 = 5;
-			const unsigned int Cel2x3 = 6;
-			const unsigned int Cel3x1 = 7;
-			const unsigned int Cel3x2 = 8;
-			const unsigned int Cel3x3 = 9;
+			const unsigned int Cel1x3 = 2;
+			const unsigned int Cel2x1 = 3;
+			const unsigned int Cel2x2 = 4;
+			const unsigned int Cel2x3 = 5;
+			const unsigned int Cel3x1 = 6;
+			const unsigned int Cel3x2 = 7;
+			const unsigned int Cel3x3 = 8;
 			
 		public:
 			/// A default constructor.
@@ -123,16 +123,16 @@ namespace prj {
 			Matrix3x3<T> operator+(const Matrix3x3<T> & paramSource) const
 			{
 				return Matrix3x3<T>(m_Data[Cel1x1] + paramSource.m_Data[Cel1x1], 
-					m_Data[Cel1x2] + paramSource.m_Data[Cel1x2], 
-					m_Data[Cel1x3] + paramSource.m_Data[Cel1x3],
+				m_Data[Cel1x2] + paramSource.m_Data[Cel1x2], 
+				m_Data[Cel1x3] + paramSource.m_Data[Cel1x3],
 					
-					m_Data[Cel2x1] + paramSource.m_Data[Cel2x1], 
-					m_Data[Cel2x2] + paramSource.m_Data[Cel2x2], 
-					m_Data[Cel2x3] + paramSource.m_Data[Cel2x3],
+				m_Data[Cel2x1] + paramSource.m_Data[Cel2x1], 
+				m_Data[Cel2x2] + paramSource.m_Data[Cel2x2], 
+				m_Data[Cel2x3] + paramSource.m_Data[Cel2x3],
 					
-					m_Data[Cel3x1] + paramSource.m_Data[Cel3x1], 
-					m_Data[Cel3x2] + paramSource.m_Data[Cel3x2], 
-					m_Data[Cel3x3] + paramSource.m_Data[Cel3x3]);
+				m_Data[Cel3x1] + paramSource.m_Data[Cel3x1], 
+				m_Data[Cel3x2] + paramSource.m_Data[Cel3x2], 
+				m_Data[Cel3x3] + paramSource.m_Data[Cel3x3]);
 			}
 
 			Matrix3x3<T> & operator-=(const Matrix3x3<T> & paramSource)
@@ -155,16 +155,16 @@ namespace prj {
 			Matrix3x3<T> operator-(const Matrix3x3<T> & paramSource) const
 			{
 				return Matrix3x3<T>(m_Data[Cel1x1] - paramSource.m_Data[Cel1x1], 
-					m_Data[Cel1x2] - paramSource.m_Data[Cel1x2], 
-					m_Data[Cel1x3] - paramSource.m_Data[Cel1x3],
+				m_Data[Cel1x2] - paramSource.m_Data[Cel1x2], 
+				m_Data[Cel1x3] - paramSource.m_Data[Cel1x3],
 					
-					m_Data[Cel2x1] - paramSource.m_Data[Cel2x1], 
-					m_Data[Cel2x2] - paramSource.m_Data[Cel2x2], 
-					m_Data[Cel2x3] - paramSource.m_Data[Cel2x3],
+				m_Data[Cel2x1] - paramSource.m_Data[Cel2x1], 
+				m_Data[Cel2x2] - paramSource.m_Data[Cel2x2], 
+				m_Data[Cel2x3] - paramSource.m_Data[Cel2x3],
 					
-					m_Data[Cel3x1] - paramSource.m_Data[Cel3x1], 
-					m_Data[Cel3x2] - paramSource.m_Data[Cel3x2], 
-					m_Data[Cel3x3] - paramSource.m_Data[Cel3x3]);
+				m_Data[Cel3x1] - paramSource.m_Data[Cel3x1], 
+				m_Data[Cel3x2] - paramSource.m_Data[Cel3x2], 
+				m_Data[Cel3x3] - paramSource.m_Data[Cel3x3]);
 			}
 			
 			Matrix3x3<T>  operator* (const Matrix3x3<T> & paramSource)
@@ -184,8 +184,8 @@ namespace prj {
 			Matrix3x3<T> Transpose(void) const
 			{
 				return Matrix3x3<T>(m_Data[Cel1x1], m_Data[Cel1x2], m_Data[Cel1x3],
-					m_Data[Cel2x1], m_Data[Cel2x2], m_Data[Cel2x3],
-					m_Data[Cel3x1], m_Data[Cel3x2], m_Data[Cel3x3])
+				m_Data[Cel2x1], m_Data[Cel2x2], m_Data[Cel2x3],
+				m_Data[Cel3x1], m_Data[Cel3x2], m_Data[Cel3x3])
 			}
 			
 		};
