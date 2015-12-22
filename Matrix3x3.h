@@ -170,15 +170,15 @@ namespace prj {
 			Matrix3x3<T>  operator* (const Matrix3x3<T> & paramSource)
 			{
 				return Matrix3x3<T>(
-				m_Data[0] * paramSource.m_Data[0] + m_Data[1] * paramSource.m_Data[3] + m_Data[2] * paramSource.m_Data[6],
-				m_Data[0] * paramSource.m_Data[1] + m_Data[1] * paramSource.m_Data[4] + m_Data[2] * paramSource.m_Data[7],
-				m_Data[0] * paramSource.m_Data[2] + m_Data[1] * paramSource.m_Data[5] + m_Data[2] * paramSource.m_Data[8],
-				m_Data[3] * paramSource.m_Data[0] + m_Data[4] * paramSource.m_Data[3] + m_Data[5] * paramSource.m_Data[6],
-				m_Data[3] * paramSource.m_Data[1] + m_Data[4] * paramSource.m_Data[4] + m_Data[5] * paramSource.m_Data[7],
-				m_Data[3] * paramSource.m_Data[2] + m_Data[4] * paramSource.m_Data[5] + m_Data[5] * paramSource.m_Data[8],
-				m_Data[6] * paramSource.m_Data[0] + m_Data[7] * paramSource.m_Data[3] + m_Data[8] * paramSource.m_Data[6],
-				m_Data[6] * paramSource.m_Data[1] + m_Data[7] * paramSource.m_Data[4] + m_Data[8] * paramSource.m_Data[7],
-				m_Data[6] * paramSource.m_Data[2] + m_Data[7] * paramSource.m_Data[5] + m_Data[8] * paramSource.m_Data[8])
+				m_Data[Cel1x1] * paramSource.m_Data[Cel1x1] + m_Data[Cel1x2] * paramSource.m_Data[Cel2x1] + m_Data[Cel1x3] * paramSource.m_Data[Cel3x1],
+				m_Data[Cel1x1] * paramSource.m_Data[Cel1x2] + m_Data[Cel1x2] * paramSource.m_Data[Cel2x2] + m_Data[Cel1x3] * paramSource.m_Data[Cel3x2],
+				m_Data[Cel1x1] * paramSource.m_Data[Cel1x3] + m_Data[Cel1x2] * paramSource.m_Data[Cel2x3] + m_Data[Cel1x3] * paramSource.m_Data[Cel3x3],
+				m_Data[Cel2x1] * paramSource.m_Data[Cel1x1] + m_Data[Cel2x2] * paramSource.m_Data[Cel2x1] + m_Data[Cel2x3] * paramSource.m_Data[Cel3x1],
+				m_Data[Cel2x1] * paramSource.m_Data[Cel1x2] + m_Data[Cel2x2] * paramSource.m_Data[Cel2x2] + m_Data[Cel2x3] * paramSource.m_Data[Cel3x2],
+				m_Data[Cel2x1] * paramSource.m_Data[Cel1x3] + m_Data[Cel2x2] * paramSource.m_Data[Cel2x3] + m_Data[Cel2x3] * paramSource.m_Data[Cel3x3],
+				m_Data[Cel3x1] * paramSource.m_Data[Cel1x1] + m_Data[Cel3x2] * paramSource.m_Data[Cel2x1] + m_Data[Cel3x3] * paramSource.m_Data[Cel3x1],
+				m_Data[Cel3x1] * paramSource.m_Data[Cel1x2] + m_Data[Cel3x2] * paramSource.m_Data[Cel2x2] + m_Data[Cel3x3] * paramSource.m_Data[Cel3x2],
+				m_Data[Cel3x1] * paramSource.m_Data[Cel1x3] + m_Data[Cel3x2] * paramSource.m_Data[Cel2x3] + m_Data[Cel3x3] * paramSource.m_Data[Cel3x3])
 			}
 			
 			Matrix3x3<T> Transpose(void) const
