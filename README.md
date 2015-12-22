@@ -8,6 +8,8 @@ Objet mathématique :
 <ul> 
 <li>Vecteur 2D</li>
 <li>Vecteur 3D</li>
+<li>Complex</li>
+<li>Matrix</li>
 </ul>
 
 Dépendances :
@@ -22,8 +24,10 @@ Dépendances :
 C ++ Mathematic library <br>
 Mathematique object :
 <ul> 
-<li>Vector 2D</li>
-<li>Vector 3D</li>
+<li>Vector 2D (int, double, template)</li>
+<li>Vector 3D (int, double, template)</li>
+<li>Complex</li>
+<li>Matrix</li>
 </ul>
 Depends :
 <ul> 
