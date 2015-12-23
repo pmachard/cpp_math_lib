@@ -101,10 +101,10 @@ namespace prj {
 			/// Operator *= multiplication one vector and a double
 			/// @param double to use for multiplication operation
 			/// @return (x,y)*m => (x*=m,y*=m)
-			inline Vector2D<T> & operator *= (int value)
+			inline Vector2D<T> & operator *= (T paramValue)
 			{
-				m_x *= value;
-				m_y *= value;
+				m_x *= paramValue;
+				m_y *= paramValue;
 				return (*this);
 			}
 
