@@ -9,9 +9,7 @@ namespace prj {
 		template <typename T> class Vector2D
 		{
 		private:
-			/// The x component.
 			T m_x;
-			/// The y component.
 			T m_y;
 		public:
 			/// A default constructor.
