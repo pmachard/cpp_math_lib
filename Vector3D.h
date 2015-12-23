@@ -16,167 +16,218 @@ namespace prj {
 		public:
 			/// A default constructor.
 			/// @brief x and y and z are set with 0.0
-			inline Vector3D(void) : m_x((T)0.0), m_y((T)0.0), m_z((T)0.0) {}
+			inline Vector3D(void) : m_x(0.0), m_y(0.0), m_z(0.0) {}
 
 			/// A constructor with parameter.
 			/// @param x value
 			/// @param y value	
-			inline Vector3D(const T & x, const T & y, const T & z) : m_x(x), m_y(y), m_z(z) {}
+			inline Vector3D(const T & paramX, const T & paramY, const T & paramZ) : m_x(paramX), m_y(paramY), m_z(paramZ) {}
 
 			/// A copy constructor.
 			/// @param source the copy source
-			inline Vector3D(const Vector3D<T> & source)
+			inline Vector3D(const Vector3D<T> & paramVector)
 			{
-				m_x = source.m_x;
-				m_y = source.m_y;
-				m_z = source.m_z;
+				m_x = paramVector.m_x;
+				m_y = paramVector.m_y;
+				m_z = paramVector.m_z;
 			}
 
 			/// A affection operator.
 			/// @param p_source the affectation source
 			/// @return the object with new value
-			inline Vector3D<T> & operator = (const Vector3D<T> & source)
+			inline Vector3D<T> & operator = (const Vector3D<T> & paramVector)
 			{
-				m_x = source.m_x;
-				m_y = source.m_y;
-				m_z = source.m_z;
+				m_x = paramVector.m_x;
+				m_y = paramVector.m_y;
+				m_z = paramVector.m_z;
 				return (*this);
 			}
 
 			/// A field x accessor.
 			/// @return x value
 			inline const T & GetX(void) const { return m_x; }
+			inline T & GetX(void) { return m_x; }
 			/// Set the field x.
 			/// @param value the value set to x
-			inline void SetX(const T & value) { m_x = value; }
+			inline void SetX(const T & paramX) { m_x = paramX; }
 
 			/// A field y accessor.
 			/// @return y value
 			inline const T & GetY(void)const { return m_y; }
+			inline T & GetY(void) { return m_y; }
 			/// Set the field y.
 			/// @param value the value set to y
-			inline void SetY(const T & value) { m_y = value; }
+			inline void SetY(const T & paramY) { m_y = paramY; }
 
 			/// A field z accessor.
 			/// @return z value
-			inline const T & GetZ(void)const { return m_z; }
+			inline const T & GetZ(void) const { return m_z; }
+			inline T & GetZ(void) { return m_z; }
 			/// Set the field z.
 			/// @param value the value set to z
-			inline void SetZ(const T & value) { m_z = value; }
+			inline void SetZ(const T & paramZ) { m_z = paramZ; }
 
+			inline T& operator[] (unsigned int paramIndex) {
+				if (paramIndex == 0)
+					return GetX();
+				if (paramIndex == 1)
+					return GetY();
+				return GetZ();
+			};
+			
+			inline const T& operator[] (unsigned int paramIndex) const 
+			{
+				if (paramIndex == 0)
+					return GetX();
+				if (paramIndex == 1)
+					return GetY();
+				return GetZ();
+			};		
 			/// Compute the abslute vector 3d 
 			/// @result the result vector abs(x,y,z) = (abs(x),abs(y),abs(z))
-			inline Vector3D<T> abs(void) const { return Vector3D<T>(abs(m_x), abs(m_y), abs(m_z)); }
+			inline Vector3D<T> abs(void) const 
+			{ 
+				return Vector3D<T>(abs(m_x), abs(m_y), abs(m_z)); 
+			}
 
 			/// Operator += increment vector with another vector
 			/// @param vector to use for additional operation
 			/// @result (xa,ya,za)+=(xb,yb,zb) => (xa+=xb,ya+=yb,za+=zb)
-			inline Vector3D<T> & operator += (const Vector3D<T> & source)
+			inline Vector3D<T> & operator += (const Vector3D<T> & paramVector)
 			{
-				m_x += source.m_x;
-				m_y += source.m_y;
-				m_z += source.m_z;
+				m_x += paramVector.m_x;
+				m_y += paramVector.m_y;
+				m_z += paramVector.m_z;
 				return (*this);
 			}
 
 			/// Operator + add vector with another vector
 			/// @param vector to use for additional operation
 			/// @result (xa,ya,za)+(xb,yb,zb) => (xa+xb,ya+yb,za+zb)
-			inline Vector3D<T> operator + (const Vector3D<T> & source) const { return Vector3D<T>(m_x + source.m_x, m_y + source.m_y, m_z + source.m_z); }
+			inline Vector3D<T> operator + (const Vector3D<T> & paramVector) const 
+			{ 
+				return Vector3D<T>(m_x + paramVector.m_x, m_y + paramVector.m_y, m_z + paramVector.m_z); 
+			}
 
 			/// Operator += decrement vector with another vector
 			/// @param vector to use for sustration operation
 			/// @result (xa,ya,za)-=(xb,yb,zb) => (xa-=xb,ya-=yb,za-=zb)
-			inline Vector3D<T> & operator -= (const Vector3D<T> & source)
+			inline Vector3D<T> & operator -= (const Vector3D<T> & paramVector)
 			{
-				m_x -= source.m_x;
-				m_y -= source.m_y;
-				m_z -= source.m_z;
+				m_x -= paramVector.m_x;
+				m_y -= paramVector.m_y;
+				m_z -= paramVector.m_z;
 				return (*this);
 			}
 
 			/// Operator - sustraction vector with another vector
 			/// @param vector to use to sustraction operation
 			/// @result (xa,ya,za)-(xb,yb,zb) => (xa-xb,ya-yb,za-zb)
-			inline Vector3D<T> operator - (const Vector3D<T> & source) const { return Vector3D<T>(m_x - source.m_x, m_y - source.m_y, m_z - source.m_z); }
+			inline Vector3D<T> operator - (const Vector3D<T> & paramVector) const 
+			{ 
+				return Vector3D<T>(m_x - paramVector.m_x, m_y - paramVector.m_y, m_z - paramVector.m_z); 
+			}
 
-			/// Operator *= multiplication vector with double value
-			/// @param value to use to make the multiplication 
-			/// @result (xa,ya,za)*=m => (xa*=m,ya*=m,za*=m)
-			inline Vector3D<T> & operator *= (const T & value)
+			inline Vector3D<T> operator - (const Vector3D<T> & paramVector) const
 			{
-				m_x *= value;
-				m_y *= value;
-				m_z *= value;
+				return Vector3D<T>(-paramVector.m_x,-paramVector.m_y,-paramVector.m_z);
+			}
+
+			/// Operator *= multiplication vector with double paramValue
+			/// @param paramValue to use to make the multiplication 
+			/// @result (xa,ya,za)*=paramValue => (xa*=paramValue,ya*=paramValue,za*=paramValue)
+			inline Vector3D<T> & operator *= (const T & paramValue)
+			{
+				m_x *= paramValue;
+				m_y *= paramValue;
+				m_z *= paramValue;
 				return (*this);
 			}
 
-			/// Operator * multiplication vector with double value
-			/// @param value to use to make the multiplication 
-			/// @result (xa,ya,za)*m => (xa*m,ya*m,za*m)
-			inline Vector3D<T> operator * (const T & value) const { return Vector3D<T>(m_x * value, m_y * value, m_z * value); }
+			/// Operator * multiplication vector with double paramValue
+			/// @param paramValue to use to make the multiplication 
+			/// @result (xa,ya,za)*paramValue => (xa*paramValue,ya*paramValue,za*paramValue)
+			inline Vector3D<T> operator * (const T & paramValue) const 
+			{ 
+				return Vector3D<T>(m_x * paramValue, m_y * paramValue, m_z * paramValue); 
+			}
 
-			/// Operator /= division vector with double value
-			/// @param value to use to make the division 
-			/// @result (xa,ya,za)/=m => (xa/=m,ya/=m,za/=m)
-			inline Vector3D<T> & operator /= (const T & value)
+			/// Operator /= division vector with double paramValue
+			/// @param paramValue to use to make the division 
+			/// @result (xa,ya,za)/=paramValue => (xa/=paramValue,ya/=paramValue,za/=paramValue)
+			inline Vector3D<T> & operator /= (const T & paramValue)
 			{
-				if (value == 0.0)
+				if (paramValue == 0.0)
 					throw;
-				m_x /= value;
-				m_y /= value;
-				m_z /= value;
+				m_x /= paramValue;
+				m_y /= paramValue;
+				m_z /= paramValue;
 				return (*this);
 			}
 
-			/// Operator / division vector with double value
-			/// @param value to use to make the division 
-			/// @result (xa,ya,za)/=m => (xa/m,ya/m,za/m)
-			inline Vector3D<T> operator / (const T & value) const
+			/// Operator / division vector with double paramValue
+			/// @param paramValue to use to make the division 
+			/// @result (xa,ya,za)/=paramValue => (xa/paramValue,ya/paramValue,za/paramValue)
+			inline Vector3D<T> operator / (const T & paramValue) const
 			{
-				if (value == 0.0)
+				if (paramValue == 0.0)
 					throw;
-				return Vector3D<T>(m_x / value, m_y / value, m_z / value);
+				return Vector3D<T>(m_x / paramValue, m_y / paramValue, m_z / paramValue);
 			}
 
 			/// Operator * multiplication with two vectors
 			/// @param vector to use to make the multiplication 
 			/// @result (xa,ya,za)*(xb,yb,zb) => (xa*xb,ya*yb,za*zb)
-			inline Vector3D<T> operator * (const Vector3D<T> & source) const { return Vector3D<T>(m_x * source.m_x, m_y * source.m_y, m_z * source.m_z); }
+			inline Vector3D<T> operator * (const Vector3D<T> & paramVector) const 
+			{ 
+				return Vector3D<T>(m_x * paramVector.m_x, m_y * paramVector.m_y, m_z * paramVector.m_z); 
+			}
 
 			/// Operator *= multiplication with two vectors
 			/// @param vector to use to make the multiplication 
 			/// @result (xa,ya,za)*=(xb,yb,zb) => (xa*=xb,ya*=yb,za*=zb)
-			inline Vector3D<T> & operator *= (const Vector3D<T> & source)
+			inline Vector3D<T> & operator *= (const Vector3D<T> & paramVector)
 			{
-				m_x *= source.m_x;
-				m_y *= source.m_y;
-				m_z *= source.m_y;
+				m_x *= paramVector.m_x;
+				m_y *= paramVector.m_y;
+				m_z *= paramVector.m_y;
 				return (*this);
 			}
 
 			/// Operator ^ scalar product
 			/// @param vector to use for scalar operation
 			/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
-			inline T operator ^ (const Vector3D<T> & source) const { return (m_x * source.m_y) - (m_y * source.m_x); }
+			inline T operator ^ (const Vector3D<T> & paramVector) const 
+			{ 
+				return (m_x * paramVector.m_y) - (m_y * paramVector.m_x); 
+			}
 
 			/// Operator equality check exact value
 			/// @param source to use for comparison
 			/// @return double (xa,ya,za) == (xb,yb,zb) = (xa == xb) and (ya == yb) and (za == zb)
-			inline bool operator == (const Vector3D<T> & source) { return ((m_x == source.m_x) && (m_y == source.m_y) && (m_z == source.m_z)); }
+			inline bool operator == (const Vector3D<T> & paramVector) 
+			{ 
+				return ((m_x == paramVector.m_x) && (m_y == paramVector.m_y) && (m_z == paramVector.m_z)); 
+			}
 
 			/// Operator not equal check exact value
 			/// @param source to use for comparison
 			/// @return double (xa,ya,za) != (xb,yb,za) = (xa != xb) or (ya != yb) or (za != zb)		
-			inline bool operator != (const Vector3D<T> & source)	{ return !this->operator == (source); }
+			inline bool operator != (const Vector3D<T> & paramVector)	
+			{ 
+				return !this->operator == (paramVector); 
+			}
 
-			inline T LengthSquared(void) { return m_x * m_x + m_y * m_y + m_z * m_z; }
+			inline T LengthSquared(void) 
+			{ 
+				return m_x * m_x + m_y * m_y + m_z * m_z; 
+			}
 
-			static Vector3D<T> Cross(const Vector3D<T> & vectorA, const Vector3D<T> & vectorB)
+			static Vector3D<T> Cross(const Vector3D<T> & paramVectorA, const Vector3D<T> & paramVectorB)
 			{
-				return Vector3D<T>(vectorA.m_y * vectorB.m_z - vectorA.m_z * vectorB.m_y,
-					vectorA.m_z * vectorB.m_x - vectorA.m_x * vectorB.m_z,
-					vectorA.m_x * vectorB.m_y - vectorA.m_y * vectorB.m_x);
+				return Vector3D<T>(paramVectorA.m_y * paramVectorB.m_z - paramVectorA.m_z * paramVectorB.m_y,
+					paramVectorA.m_z * paramVectorB.m_x - paramVectorA.m_x * paramVectorB.m_z,
+					paramVectorA.m_x * paramVectorB.m_y - paramVectorA.m_y * paramVectorB.m_x);
 			}
 
 			/// Method to make a vector with specific coord handle
