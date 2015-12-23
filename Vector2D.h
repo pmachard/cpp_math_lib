@@ -90,12 +90,19 @@ namespace prj {
 				return (*this);
 			}
 
-			/// Operator + subb two vectors
+			/// Operator - subb two vectors
 			/// @param vector to use for sustraction operation
 			/// @return (xa,ya)-(xb,yb) = (xa-xb,ya-yb)
 			inline Vector2D<T> operator - (const Vector2D<T> & source) const
 			{
 				return Vector2D<T>(m_x - source.m_x, m_y - source.m_y);
+			}
+			
+			/// Operator - 
+			/// @return (-x,-y)
+			inline Vector2D<T> operator - (void) const
+			{
+				return Vector2D<T>(-m_x, -m_y);
 			}
 
 			/// Operator *= multiplication one vector and a double
@@ -116,15 +123,27 @@ namespace prj {
 				return Vector2D<T>(m_x*value, m_y*value);
 			}
 
-			/// Operator /= disision one vector and a double
-			/// @param double to use for division operation
+			/// Operator /= disision one vector and T Value
+			/// @param T to use for division operation
 			/// @return (x,y)/m => (x/=m,y/=m)
-			inline Vector2D<T> & operator /= (T value)
+			inline Vector2D<T> & operator /= (T paramValue)
 			{
-				if (value == 0)
+				if (paramValue == (T)0)
 					throw;
-				m_x /= value;
-				m_y /= value;
+				m_x /= paramValue;
+				m_y /= paramValue;
+				return (*this);
+			}
+			
+			/// Operator /= disision one vector and a other vector
+			/// @paramVector vector used for division operation
+			/// @return (x,y)/m => (x/=m,y/=m)
+			inline Vector2D<T> & operator /= (T paramVector)
+			{
+				if ((paramValue.GetX() == (T)0) || (paramValue.GetY() == (T)0))
+					throw;
+				m_x /= paramValue.GetX();
+				m_y /= paramValue.GetY();
 				return (*this);
 			}
 
@@ -189,6 +208,58 @@ namespace prj {
 			inline Vector2D<T> MakeXX(void) { return Vector2D<T>(m_x, m_x);}
 			inline Vector2D<T> MakeYX(void)	{ return Vector2D<T>(m_y, m_x); }
 			inline Vector2D<T> MakeYY(void)	{ return Vector2D<T>(m_y, m_y); }
+			
+			inline T Dot (const Vector2D<T> & paramVectorA, const Vector2D<T> & paramVectorB) {
+			      return (paramVectorA.GetX() * paramVectorB.GetX() + paramVectorA.GetY() * paramVectorB.GetY());
+			}			
+			
+			inline T SquaredLength() const 
+			{
+			        return (Dot (*this, *this));
+			};
+			
+			inline T Length(void) const {
+			        return (T)sqrt (SquaredLength());
+			};
+			
+			inline T normalize (void) 
+			{
+				T l = Length ();
+				
+				if (l == (T) 0.0f)
+				  return (T) 0.0f;
+				  
+				m_X /= l;
+				m_Y /= l;
+				
+				return l;
+			};			
+			
+			inline Vector2D<T> Normalize (const Vector2D<T> & paramVect) 
+			{
+			    Vector2D<T> r (paramVect);
+			    r.Normalize ();
+			    return r;
+			}			
+			
+			inline T Distance (const Vector2D<T> & paramVectorA, const Vector2D<T> & paramVectorB) 
+			{
+			    return (paramVectorA-paramVectorB).Length ();
+			}
+			
+			inline Vec3<T> operator * (const T & paramValue, const Vector2D<T> & paramVector) 
+			{
+			   return (paramVector * paramValue);
+			}			
+			
+			std::ostream & operator<< (std::ostream & paramOutput, const Vector2D<T> & paramVector) {
+			  paramOutput << "(" << paramVector.GetX() << ";" << paramVector.GetY() << ")";
+			  return paramOutput;
+			}			
 		};
+		
+		typedef Vector2D<float> Vector2Ddloat;
+		typedef Vector2D<double> Vector2Ddouble;
+		typedef Vector2D<int> Vector2Dint;		
 	}
 }
