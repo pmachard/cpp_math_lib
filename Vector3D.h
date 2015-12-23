@@ -282,7 +282,7 @@ namespace prj {
 			}			
 		};
 		
-		typedef Vector3D<float> Vector3Ddloat;
+		typedef Vector3D<float> Vector3Dfloat;
 		typedef Vector3D<double> Vector3Ddouble;
 		typedef Vector3D<int> Vector3Dint;		
 	}
