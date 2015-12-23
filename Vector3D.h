@@ -7,11 +7,8 @@ namespace prj {
 		template <typename T> class Vector3D
 		{
 		private:
-			/// The x component.
 			T m_x;
-			/// The y component.
 			T m_y;
-			/// The z component.
 			T m_z;
 		public:
 			/// A default constructor.
