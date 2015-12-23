@@ -5,7 +5,7 @@
 namespace prj {
 	namespace math {
 
-		/// @class mathematical vector with int (x,y).
+		/// @class mathematical vector with T (x,y).
 		template <typename T> class Vector2D
 		{
 		private:
@@ -43,17 +43,31 @@ namespace prj {
 
 			/// A field x accessor.
 			/// @return x value
-			inline int GetX(void) const  { return m_x; }
+			inline T GetX(void) const  { return m_x; }
 			/// Set the field x.
 			/// @param value the value set to x
-			inline void SetX(int value) { m_x = value; }
+			inline void SetX(T value) { m_x = value; }
 
 			/// A field y accessor.
 			/// @return y value
-			inline int GetY(void)const  { return m_y; }
+			inline T GetY(void)const  { return m_y; }
 			/// Set the field y.
 			/// @param value the value set to y
-			inline void SetY(int value) { m_y = value; }
+			inline void SetY(T value) { m_y = value; }
+		
+			
+			inline T& operator[] (unsigned int paramIndex) {
+				if (paramIndex == 0)
+					return GetX();
+				return GetY();
+			};
+			
+			inline const T& operator[] (unsigned int paramIndex) const 
+			{
+				if (paramIndex == 0)
+					return GetX();
+				return GetY();
+			};			
 
 			/// Compute the abslute vector 2d abs(x,y) = (abs(x),abs(y)). 
 			/// @result the result vector 
