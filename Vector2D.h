@@ -238,7 +238,7 @@ namespace prj {
 			        return (T)sqrt (SquaredLength());
 			};
 			
-			inline T normalize (void) 
+			inline T Normalize (void) 
 			{
 				T l = Length ();
 				
