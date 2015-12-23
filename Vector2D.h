@@ -21,23 +21,23 @@ namespace prj {
 			/// A constructor with parameter.
 			/// @param x value
 			/// @param y value
-			inline Vector2D(T x, T y) : m_x(x), m_y(y) {}
+			inline Vector2D(T paramX, T paramY) : m_x(paramX), m_y(paramY) {}
 
 			/// A copy constructor.
 			/// @param source the copy source
-			inline Vector2D(const Vector2D<T> & source)
+			inline Vector2D(const Vector2D<T> & paramVector)
 			{
-				m_x = source.m_x;
-				m_y = source.m_y;
+				m_x = paramVector.m_x;
+				m_y = paramVector.m_y;
 			}
 
 			/// A affection operator.
 			/// @param p_source the affectation source
 			/// @return the object with new value
-			inline Vector2D<T> & operator = (const Vector2D<T> & source)
+			inline Vector2D<T> & operator = (const Vector2D<T> & paramVector)
 			{
-				m_x = source.m_x;
-				m_y = source.m_y;
+				m_x = paramVector.m_x;
+				m_y = paramVector.m_y;
 				return (*this);
 			}
 
@@ -46,14 +46,14 @@ namespace prj {
 			inline T GetX(void) const  { return m_x; }
 			/// Set the field x.
 			/// @param value the value set to x
-			inline void SetX(T value) { m_x = value; }
+			inline void SetX(T paramX) { m_x = paramX; }
 
 			/// A field y accessor.
 			/// @return y value
 			inline T GetY(void)const  { return m_y; }
 			/// Set the field y.
 			/// @param value the value set to y
-			inline void SetY(T value) { m_y = value; }
+			inline void SetY(T paramY) { m_y = paramY; }
 		
 			
 			inline T& operator[] (unsigned int paramIndex) {
@@ -79,37 +79,37 @@ namespace prj {
 			/// Operator += increment vector with another vector 
 			/// @param vector to use for additional operation
 			/// @result (xa,ya)+=(xb,yb) => (xa+=xb,ya+=yb)
-			inline Vector2D & operator += (const Vector2D<T> & source)
+			inline Vector2D & operator += (const Vector2D<T> & paramVector)
 			{
-				m_x += source.m_x;
-				m_y += source.m_y;
+				m_x += paramVector.m_x;
+				m_y += paramVector.m_y;
 				return (*this);
 			}
 
 			/// Operator + adds two vectors
 			/// @param vector to use for additional operation
 			/// @return (xa,ya)+(xb,yb) = (xa+xb,ya+yb)
-			inline Vector2D<T> operator + (const Vector2D<T> & source) const
+			inline Vector2D<T> operator + (const Vector2D<T> & paramVector) const
 			{
-				return Vector2D<T>(m_x + source.m_x, m_y + source.m_y);
+				return Vector2D<T>(m_x + paramVector.m_x, m_y + paramVector.m_y);
 			}
 
 			/// Operator -= decrement vector with another vector 
 			/// @param vector to use for sustraction operation
 			/// @result (xa,ya)-=(xb,yb) => (xa-=xb,ya-=yb)
-			inline Vector2D<T> & operator -= (const Vector2D<T> & source)
+			inline Vector2D<T> & operator -= (const Vector2D<T> & paramVector)
 			{
-				m_x -= source.m_x;
-				m_y -= source.m_y;
+				m_x -= paramVector.m_x;
+				m_y -= paramVector.m_y;
 				return (*this);
 			}
 
 			/// Operator - subb two vectors
 			/// @param vector to use for sustraction operation
 			/// @return (xa,ya)-(xb,yb) = (xa-xb,ya-yb)
-			inline Vector2D<T> operator - (const Vector2D<T> & source) const
+			inline Vector2D<T> operator - (const Vector2D<T> & paramVector) const
 			{
-				return Vector2D<T>(m_x - source.m_x, m_y - source.m_y);
+				return Vector2D<T>(m_x - paramVector.m_x, m_y - paramVector.m_y);
 			}
 			
 			/// Operator - 
@@ -119,8 +119,8 @@ namespace prj {
 				return Vector2D<T>(-m_x, -m_y);
 			}
 
-			/// Operator *= multiplication one vector and a double
-			/// @param double to use for multiplication operation
+			/// Operator *= multiplication one vector and a T
+			/// @param T to use for multiplication operation
 			/// @return (x,y)*m => (x*=m,y*=m)
 			inline Vector2D<T> & operator *= (T paramValue)
 			{
@@ -129,12 +129,12 @@ namespace prj {
 				return (*this);
 			}
 
-			/// Operator * multiplication one vector and a double
-			/// @param double to use for multiplication operation
+			/// Operator * multiplication one vector and a T
+			/// @param T to use for multiplication operation
 			/// @return (x,y)*m = (x*m,y*m)
-			inline Vector2D<T> operator * (T value) const
+			inline Vector2D<T> operator * (T paramValue) const
 			{
-				return Vector2D<T>(m_x*value, m_y*value);
+				return Vector2D<T>(m_x*paramValue, m_y*paramValue);
 			}
 
 			/// Operator /= disision one vector and T Value
@@ -161,56 +161,56 @@ namespace prj {
 				return (*this);
 			}
 
-			/// Operator / disision one vector and a double
-			/// @param double to use for disision operation
+			/// Operator / disision one vector and a T
+			/// @param T to use for disision operation
 			/// @return (x,y)/m = (x/m,y/m)
-			inline Vector2D<T> operator / (T value) const
+			inline Vector2D<T> operator / (T paramValue) const
 			{
-				if (value == (T)0)
+				if (paramValue == (T)0)
 					throw;
-				return Vector2D<T>(m_x / value, m_y / value);
+				return Vector2D<T>(m_x / paramValue, m_y / paramValue);
 			}
 
 			/// Operator * multiplication two vectors 
 			/// @param Vector2D to use for multiplication operation
 			/// @return (xa,ya)*(xb,yb) = (xa*xb,ya*yb)
-			inline Vector2D<T> operator * (const Vector2D<T> & source) const
+			inline Vector2D<T> operator * (const Vector2D<T> & paramVector) const
 			{
-				return Vector2D<T>(m_x * source.m_x, m_y * source.m_y);
+				return Vector2D<T>(m_x * paramVector.m_x, m_y * paramVector.m_y);
 			}
 
 			/// Operator * multiplication two vectors 
 			/// @param Vector2D to use for multiplication operation
 			/// @return (xa,ya)*(xb,yb) = (xa*=xb,ya*=yb)
-			inline Vector2D<T> & operator *= (const Vector2D<T> & source)
+			inline Vector2D<T> & operator *= (const Vector2D<T> & paramVector)
 			{
-				m_x *= source.m_x;
-				m_y *= source.m_y;
+				m_x *= paramVector.m_x;
+				m_y *= paramVector.m_y;
 				return (*this);
 			}
 
 			/// Operator ^ scalar product
 			/// @param Vector2D to use for scalar operation
-			/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
-			inline T operator ^ (const Vector2D<T> & source) const
+			/// @return T (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
+			inline T operator ^ (const Vector2D<T> & paramVector) const
 			{
-				return (m_x * source.m_y) - (m_y * source.m_x);
+				return (m_x * paramVector.m_y) - (m_y * paramVector.m_x);
 			}
 
 			/// Operator equality check exact value
 			/// @param Vector2D to use for comparison
-			/// @return double (xa,ya) == (xb,yb) = (xa == xb) and  (ya == yb)
-			inline bool operator == (const Vector2D<T> & source)
+			/// @return T (xa,ya) == (xb,yb) = (xa == xb) and  (ya == yb)
+			inline bool operator == (const Vector2D<T> & paramVector)
 			{
-				return ((m_x == source.m_x) && (m_y == source.m_y));
+				return ((m_x == paramVector.m_x) && (m_y == paramVector.m_y));
 			}
 
 			/// Operator not equal check exact value
 			/// @param Vector2D to use for comparison
-			/// @return double (xa,ya) != (xb,yb) = (xa != xb) or (ya != yb)
-			inline bool operator != (const Vector2D<T> & source)
+			/// @return T (xa,ya) != (xb,yb) = (xa != xb) or (ya != yb)
+			inline bool operator != (const Vector2D<T> & paramVector)
 			{
-				return !this->operator == (source);
+				return !this->operator == (paramVector);
 			}
 
 			inline T LengthSquared(void)
@@ -249,9 +249,9 @@ namespace prj {
 				return l;
 			};			
 			
-			inline Vector2D<T> Normalize (const Vector2D<T> & paramVect) 
+			inline Vector2D<T> Normalize (const Vector2D<T> & paramVector) 
 			{
-			    Vector2D<T> r (paramVect);
+			    Vector2D<T> r (paramVector);
 			    r.Normalize ();
 			    return r;
 			}			
