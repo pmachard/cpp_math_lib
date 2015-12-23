@@ -16,7 +16,7 @@ namespace prj {
 		public:
 			/// A default constructor.
 			/// @brief x and y are set with 0.0
-			inline Vector2D(void) : m_x(0), m_y(0) {}
+			inline Vector2D(void) : m_x(0.0), m_y(0.0) {}
 
 			/// A constructor with parameter.
 			/// @param x value
