@@ -17,12 +17,12 @@ namespace prj {
 			inline Vector2D(void) : m_x(0.0), m_y(0.0) {}
 
 			/// A constructor with parameter.
-			/// @param x value
-			/// @param y value
+			/// @param paramX value for X
+			/// @param paramY value for Y
 			inline Vector2D(T paramX, T paramY) : m_x(paramX), m_y(paramY) {}
 
 			/// A copy constructor.
-			/// @param source the copy source
+			/// @param paramVector the copy source
 			inline Vector2D(const Vector2D<T> & paramVector)
 			{
 				m_x = paramVector.m_x;
@@ -30,7 +30,7 @@ namespace prj {
 			}
 
 			/// A affection operator.
-			/// @param p_source the affectation source
+			/// @param paramVector the affectation source
 			/// @return the object with new value
 			inline Vector2D<T> & operator = (const Vector2D<T> & paramVector)
 			{
@@ -39,23 +39,14 @@ namespace prj {
 				return (*this);
 			}
 
-			/// A field x accessor.
-			/// @return x value
 			inline const T & GetX(void) const  { return m_x; }
 			inline T & GetX(void)  { return m_x; }
-			/// Set the field x.
-			/// @param value the value set to x
 			inline void SetX(T paramX) { m_x = paramX; }
 
-			/// A field y accessor.
-			/// @return y value
 			inline const T & GetY(void)const  { return m_y; }
 			inline T & GetY(void)  { return m_y; }
-			/// Set the field y.
-			/// @param value the value set to y
 			inline void SetY(T paramY) { m_y = paramY; }
 		
-			
 			inline T& operator[] (unsigned int paramIndex) {
 				if (paramIndex == 0)
 					return GetX();
