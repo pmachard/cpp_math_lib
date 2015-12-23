@@ -3,7 +3,7 @@
 namespace prj {
 	namespace math {
 
-		/// @class mathematical vector with double (x,y,z).
+		/// @class mathematical vector with T (x,y,z).
 		template <typename T> class Vector3D
 		{
 		private:
@@ -133,7 +133,7 @@ namespace prj {
 				return Vector3D<T>(-paramVector.m_x,-paramVector.m_y,-paramVector.m_z);
 			}
 
-			/// Operator *= multiplication vector with double paramValue
+			/// Operator *= multiplication vector with T paramValue
 			/// @param paramValue to use to make the multiplication 
 			/// @result (xa,ya,za)*=paramValue => (xa*=paramValue,ya*=paramValue,za*=paramValue)
 			inline Vector3D<T> & operator *= (const T & paramValue)
@@ -144,7 +144,7 @@ namespace prj {
 				return (*this);
 			}
 
-			/// Operator * multiplication vector with double paramValue
+			/// Operator * multiplication vector with T paramValue
 			/// @param paramValue to use to make the multiplication 
 			/// @result (xa,ya,za)*paramValue => (xa*paramValue,ya*paramValue,za*paramValue)
 			inline Vector3D<T> operator * (const T & paramValue) const 
@@ -152,7 +152,7 @@ namespace prj {
 				return Vector3D<T>(m_x * paramValue, m_y * paramValue, m_z * paramValue); 
 			}
 
-			/// Operator /= division vector with double paramValue
+			/// Operator /= division vector with T paramValue
 			/// @param paramValue to use to make the division 
 			/// @result (xa,ya,za)/=paramValue => (xa/=paramValue,ya/=paramValue,za/=paramValue)
 			inline Vector3D<T> & operator /= (const T & paramValue)
@@ -165,7 +165,7 @@ namespace prj {
 				return (*this);
 			}
 
-			/// Operator / division vector with double paramValue
+			/// Operator / division vector with T paramValue
 			/// @param paramValue to use to make the division 
 			/// @result (xa,ya,za)/=paramValue => (xa/paramValue,ya/paramValue,za/paramValue)
 			inline Vector3D<T> operator / (const T & paramValue) const
@@ -196,7 +196,7 @@ namespace prj {
 
 			/// Operator ^ scalar product
 			/// @param vector to use for scalar operation
-			/// @return double (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
+			/// @return T (xa,ya)^(xb,yb) = (xa*yb) - (ya*xb)
 			inline T operator ^ (const Vector3D<T> & paramVector) const 
 			{ 
 				return (m_x * paramVector.m_y) - (m_y * paramVector.m_x); 
@@ -204,7 +204,7 @@ namespace prj {
 
 			/// Operator equality check exact value
 			/// @param source to use for comparison
-			/// @return double (xa,ya,za) == (xb,yb,zb) = (xa == xb) and (ya == yb) and (za == zb)
+			/// @return T (xa,ya,za) == (xb,yb,zb) = (xa == xb) and (ya == yb) and (za == zb)
 			inline bool operator == (const Vector3D<T> & paramVector) 
 			{ 
 				return ((m_x == paramVector.m_x) && (m_y == paramVector.m_y) && (m_z == paramVector.m_z)); 
@@ -212,7 +212,7 @@ namespace prj {
 
 			/// Operator not equal check exact value
 			/// @param source to use for comparison
-			/// @return double (xa,ya,za) != (xb,yb,za) = (xa != xb) or (ya != yb) or (za != zb)		
+			/// @return T (xa,ya,za) != (xb,yb,za) = (xa != xb) or (ya != yb) or (za != zb)		
 			inline bool operator != (const Vector3D<T> & paramVector)	
 			{ 
 				return !this->operator == (paramVector); 
@@ -231,7 +231,7 @@ namespace prj {
 			}
 
 			/// Method to make a vector with specific coord handle
-			/// @return double (x,y,z).MakeXYZ => (x,y,z)
+			/// @return T (x,y,z).MakeXYZ => (x,y,z)
 			inline Vector3D<T> MakeXYZ(void) { return Vector3D<T>(m_x, m_y, m_z); }
 			inline Vector3D<T> MakeXXX(void) { return Vector3D<T>(m_x, m_x, m_x); }
 			inline Vector3D<T> MakeYYY(void) { return Vector3D<T>(m_y, m_y, m_y); }
@@ -246,6 +246,57 @@ namespace prj {
 			inline Vector2D<T> MakeZX(void) { return Vector2D<T>(m_z, m_x) }
 			inline Vector2D<T> MakeYZ(void) { return Vector2D<T>(m_y, m_z) }
 			inline Vector2D<T> MakeZY(void) { return Vector2D<T>(m_z, m_y) }
+			
+			inline T Dot (const Vector3D<T> & paramVectorA, const Vector3D<T> & paramVectorB) 
+			{
+			      return (paramVectorA.GetX() * paramVectorB.GetX() + paramVectorA.GetY() * paramVectorB.GetY() + paramVectorA.GetZ() * paramVectorB.GetZ());
+			}			
+			
+			inline T SquaredLength() const 
+			{
+			        return (Dot (*this, *this));
+			};
+			
+			inline T Length(void) const {
+			        return (T)sqrt (SquaredLength());
+			};			
+			
+			inline T Normalize (void) 
+			{
+				T l = Length ();
+				
+				if (l == (T) 0.0f)
+				  return (T) 0.0f;
+				  
+				m_X /= l;
+				m_Y /= l;
+				m_Z /= l;
+				
+				return l;
+			};	
+			
+			inline Vector3D<T> Normalize (const Vector3D<T> & paramVector) 
+			{
+			    Vector3D<T> r (paramVector);
+			    r.Normalize ();
+			    return r;
+			}
+			
+			inline T Distance (const Vector3D<T> & paramVectorA, const Vector3D<T> & paramVectorB) 
+			{
+			    return (paramVectorA-paramVectorB).Length ();
+			}
+			
+			inline Vector3D<T> operator * (const T & paramValue, const Vector3D<T> & paramVector) 
+			{
+			   return (paramVector * paramValue);
+			}			
+			
+			std::ostream & operator<< (std::ostream & paramOutput, const Vector3D<T> & paramVector) 
+			{
+			  paramOutput << "(" << paramVector.GetX() << ";" << paramVector.GetY() << ";" << paramVector.GetZ() << ")";
+			  return paramOutput;
+			}			
 		};
 	}
 }
