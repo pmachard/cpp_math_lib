@@ -40,28 +40,14 @@ namespace prj {
 				return (*this);
 			}
 
-			/// A field x accessor.
-			/// @return x value
-			inline const T & GetX(void) const { return m_x; }
 			inline T & GetX(void) { return m_x; }
-			/// Set the field x.
-			/// @param value the value set to x
-			inline void SetX(const T & paramX) { m_x = paramX; }
-
-			/// A field y accessor.
-			/// @return y value
-			inline const T & GetY(void)const { return m_y; }
 			inline T & GetY(void) { return m_y; }
-			/// Set the field y.
-			/// @param value the value set to y
-			inline void SetY(const T & paramY) { m_y = paramY; }
-
-			/// A field z accessor.
-			/// @return z value
-			inline const T & GetZ(void) const { return m_z; }
 			inline T & GetZ(void) { return m_z; }
-			/// Set the field z.
-			/// @param value the value set to z
+			inline const T & GetX(void) const { return m_x; }
+			inline const T & GetY(void)const { return m_y; }
+			inline const T & GetZ(void) const { return m_z; }
+			inline void SetX(const T & paramX) { m_x = paramX; }
+			inline void SetY(const T & paramY) { m_y = paramY; }
 			inline void SetZ(const T & paramZ) { m_z = paramZ; }
 
 			inline T& operator[] (unsigned int paramIndex) {
