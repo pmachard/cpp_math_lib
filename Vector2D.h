@@ -43,14 +43,16 @@ namespace prj {
 
 			/// A field x accessor.
 			/// @return x value
-			inline T GetX(void) const  { return m_x; }
+			inline const T & GetX(void) const  { return m_x; }
+			inline T & GetX(void)  { return m_x; }
 			/// Set the field x.
 			/// @param value the value set to x
 			inline void SetX(T paramX) { m_x = paramX; }
 
 			/// A field y accessor.
 			/// @return y value
-			inline T GetY(void)const  { return m_y; }
+			inline const T & GetY(void)const  { return m_y; }
+			inline T & GetY(void)  { return m_y; }
 			/// Set the field y.
 			/// @param value the value set to y
 			inline void SetY(T paramY) { m_y = paramY; }
