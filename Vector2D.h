@@ -263,7 +263,7 @@ namespace prj {
 			    return (paramVectorA-paramVectorB).Length ();
 			}
 			
-			inline Vec3<T> operator * (const T & paramValue, const Vector2D<T> & paramVector) 
+			inline Vector2D<T> operator * (const T & paramValue, const Vector2D<T> & paramVector) 
 			{
 			   return (paramVector * paramValue);
 			}			
