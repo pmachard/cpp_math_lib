@@ -105,6 +105,26 @@ namespace pma
 				VectorXd<T, dim> result(*this);
 				return (result += paramVector);
 			}
+			
+			/// Operator -= decrement vector with another vector
+			/// @param vector to use for substraction operation
+			/// @result (xa,ya,za)-=(xb,yb,zb) => (xa-=xb,ya-=yb,za-=zb)
+			inline VectorXd<T, dim> & operator -= (const VectorXd<T, dim> & paramVector)
+			{
+				for (int iPos = 0; iPos < dim; iPos++)
+					m_data[iPos] -= paramVector.m_data[iPos];
+
+				return (*this);
+			}
+
+			/// Operator - add vector with another vector
+			/// @param vector to use for substraction operation
+			/// @result (xa,ya,za)-(xb,yb,zb) => (xa-xb,ya-yb,za-zb)
+			inline VectorXd<T, dim> operator + (const VectorXd<T, dim> & paramVector) const
+			{
+				VectorXd<T, dim> result(*this);
+				return (result -= paramVector);
+			}			
 
 			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T,dim> & paramVector)
 			{
