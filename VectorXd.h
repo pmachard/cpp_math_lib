@@ -7,8 +7,6 @@ namespace pma
 {
 	namespace math
 	{
-
-
 		/// @class mathematical vector with T (x,y,z).
 		template <typename T,unsigned int dim> class VectorXd
 		{
@@ -97,6 +95,15 @@ namespace pma
 				return (*this);
 			}
 
+			/// Operator + add vector with another vector
+			/// @param vector to use for additional operation
+			/// @result (xa,ya,za)+(xb,yb,zb) => (xa+xb,ya+yb,za+zb)
+			inline VectorXd<T, dim> operator + (const VectorXd<T, dim> & paramVector) const
+			{
+				VectorXd<T, dim> result(*this);
+				return (result += paramVector);
+			}
+
 			/// Operator -= decrement vector with another vector
 			/// @param vector to use for substraction operation
 			/// @result (a1,a2,...,an) -= (b1,b2,...,bn) => (a1 - b1,a2 - b2,...,an - bn)
@@ -137,15 +144,31 @@ namespace pma
 				return (result * paramValue);
 			}
 
-
-			/// Operator - add vector with another vector
-			/// @param vector to use for substraction operation
-			/// @result (xa,ya,za)-(xb,yb,zb) => (xa-xb,ya-yb,za-zb)
-			inline VectorXd<T, dim> operator + (const VectorXd<T, dim> & paramVector) const
+			/// Operator /= division vector with T paramValue
+			/// @param paramValue to use to make the division 
+			/// @result (xa,ya,za)/=paramValue => (xa/=paramValue,ya/=paramValue,za/=paramValue)
+			inline VectorXd<T, dim> & operator /= (const T & paramValue)
 			{
+				if (paramValue == 0.0)
+					throw;
+
+				for (int iPos = 0; iPos < dim; iPos++)
+					m_data[iPos] /= paramValue;
+
+				return (*this);
+			}
+
+			/// Operator / division vector with T paramValue
+			/// @param paramValue to use to make the division 
+			/// @result (xa,ya,za)/=paramValue => (xa/paramValue,ya/paramValue,za/paramValue)
+			inline VectorXd<T, dim> operator / (const T & paramValue) const
+			{
+				if (paramValue == 0.0)
+					throw;
+
 				VectorXd<T, dim> result(*this);
-				return (result -= paramVector);
-			}			
+				return (result / paramValue);
+			}
 
 			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T,dim> & paramVector)
 			{
@@ -160,7 +183,6 @@ namespace pma
 				return paramOutput;
 			}
 		};
-
 	}
 }
 
