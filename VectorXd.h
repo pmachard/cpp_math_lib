@@ -97,18 +97,9 @@ namespace pma
 				return (*this);
 			}
 
-			/// Operator + add vector with another vector
-			/// @param vector to use for additional operation
-			/// @result (xa,ya,za)+(xb,yb,zb) => (xa+xb,ya+yb,za+zb)
-			inline VectorXd<T, dim> operator + (const VectorXd<T, dim> & paramVector) const
-			{
-				VectorXd<T, dim> result(*this);
-				return (result += paramVector);
-			}
-			
 			/// Operator -= decrement vector with another vector
 			/// @param vector to use for substraction operation
-			/// @result (xa,ya,za)-=(xb,yb,zb) => (xa-=xb,ya-=yb,za-=zb)
+			/// @result (a1,a2,...,an) -= (b1,b2,...,bn) => (a1 - b1,a2 - b2,...,an - bn)
 			inline VectorXd<T, dim> & operator -= (const VectorXd<T, dim> & paramVector)
 			{
 				for (int iPos = 0; iPos < dim; iPos++)
@@ -116,6 +107,36 @@ namespace pma
 
 				return (*this);
 			}
+
+			/// Operator - add vector with another vector
+			/// @param vector to use for substraction operation
+			/// @result (a1,a2,...,an) - (b1,b2,...,bn) => (a1 - b1,a2 - b2,...,an - bn)
+			inline VectorXd<T, dim> operator - (const VectorXd<T, dim> & paramVector) const
+			{
+				VectorXd<T, dim> result(*this);
+				return (result -= paramVector);
+			}
+
+			/// Operator *= multiplication vector with T paramValue
+			/// @param paramValue to use to make the multiplication 
+			/// @result (a1,a2,...,an) *= v => (a1 * v,a2 * v,...,an * v)
+			inline VectorXd<T, dim> & operator *= (const T & paramValue)
+			{
+				for (int iPos = 0; iPos < dim; iPos++)
+					m_data[iPos] *= paramValue;
+
+				return (*this);
+			}
+
+			/// Operator * multiplication vector with T paramValue
+			/// @param paramValue to use to make the multiplication 
+			/// @result (a1,a2,...,an) * v => (a1 * v,a2 * v,...,an * v)
+			inline VectorXd<T, dim> operator * (const T & paramValue) const
+			{
+				VectorXd<T, dim> result(*this);
+				return (result * paramValue);
+			}
+
 
 			/// Operator - add vector with another vector
 			/// @param vector to use for substraction operation
