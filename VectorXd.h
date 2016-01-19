@@ -7,17 +7,22 @@ namespace pma
 {
 	namespace math
 	{
-		/// @class mathematical vector with T (x,y,z).
-		template <typename T,unsigned int dim> class VectorXd
+		const unsigned int X = 0;
+		const unsigned int Y = 1;
+		const unsigned int Z = 2;
+		const unsigned int T = 3;
+
+		/// @class mathematical vector with (T,dim) (d1,d2,...,dn).
+		template <typename T, unsigned int dim> class VectorXd
 		{
 		private:
 			T * m_data;
 		public:
 			/// A default constructor.
-			/// @brief x and y and z are set with 0.0
+			/// @brief create the Tab with T time and dim value (set to 0.0)
 			inline VectorXd(void)
 			{
-				m_data = new double[dim];
+				m_data = new T[dim];
 				for (int iPos = 0; iPos < dim; iPos++)
 					m_data[iPos] = (T) 0.0;
 			}
@@ -28,21 +33,21 @@ namespace pma
 			{
 				m_data = new double[dim];
 				for (int iPos = 0; iPos < dim; iPos++)
-					m_data[iPos] = (T) paramVector.m_data[iPos];
+					m_data[iPos] = (T)paramVector.m_data[iPos];
 			}
 
 			inline VectorXd(T data[dim])
 			{
 				m_data = new double[dim];
 				for (int iPos = 0; iPos < dim; iPos++)
-					m_data[iPos] = (T) data[iPos];
-			}			
+					m_data[iPos] = (T)data[iPos];
+			}
 
 			inline ~VectorXd(void)
 			{
 				if (m_data != NULL)
 				{
-					delete [] m_data;
+					delete[] m_data;
 					m_data = NULL;
 				}
 			}
@@ -50,7 +55,7 @@ namespace pma
 			/// A affection operator.
 			/// @param p_source the affectation source
 			/// @return the object with new value
-			inline VectorXd<T,dim> & operator = (const VectorXd<T,dim> & paramVector)
+			inline VectorXd<T, dim> & operator = (const VectorXd<T, dim> & paramVector)
 			{
 				if (m_data != NULL)
 					delete[] m_data;
@@ -74,7 +79,7 @@ namespace pma
 
 			/// Compute the abslute vector 3d 
 			/// @result the result vector abs(x,y,z) = (abs(x),abs(y),abs(z))
-			inline VectorXd<T,dim> abs(void) const
+			inline VectorXd<T, dim> abs(void) const
 			{
 				T data[dim];
 
@@ -170,13 +175,13 @@ namespace pma
 				return (result / paramValue);
 			}
 
-			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T,dim> & paramVector)
+			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T, dim> & paramVector)
 			{
 				paramOutput << "(";
 				for (int iPos = 0; iPos < dim; iPos++)
 				{
 					paramOutput << paramVector.m_data[iPos];
-					if (iPos < dim-1)
+					if (iPos < dim - 1)
 						paramOutput << ";";
 				}
 				paramOutput << ")";
