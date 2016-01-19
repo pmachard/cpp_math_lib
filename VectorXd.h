@@ -69,16 +69,22 @@ namespace pma
 			}
 
 			inline T& operator[] (unsigned int paramIndex) {
+				if (paramIndex > dim - 1)
+					throw range_error("VectorXd operator [] out of range access : ");
+
 				return m_data[paramIndex];
 			};
 
 			inline const T& operator[] (unsigned int paramIndex) const
 			{
+				if (paramIndex > dim - 1)
+					throw range_error("VectorXd operator [] out of range access : ");
+
 				return m_data[paramIndex];
 			};
 
 			/// Compute the abslute vector 3d 
-			/// @result the result vector abs(x,y,z) = (abs(x),abs(y),abs(z))
+			/// @result the result vector abs(d1,d2,...,dn) = (abs(d1),abs(d2),...,abs(dn))
 			inline VectorXd<T, dim> abs(void) const
 			{
 				T data[dim];
@@ -91,7 +97,7 @@ namespace pma
 
 			/// Operator += increment vector with another vector
 			/// @param vector to use for additional operation
-			/// @result (xa,ya,za)+=(xb,yb,zb) => (xa+=xb,ya+=yb,za+=zb)
+			/// @result (d1,d2,...,dn)+=(e1,e2b,...,en) => (d1+=e1,d2+=e2,..,dn+=en)
 			inline VectorXd<T, dim> & operator += (const VectorXd<T, dim> & paramVector)
 			{
 				for (int iPos = 0; iPos < dim; iPos++)
@@ -102,7 +108,7 @@ namespace pma
 
 			/// Operator + add vector with another vector
 			/// @param vector to use for additional operation
-			/// @result (xa,ya,za)+(xb,yb,zb) => (xa+xb,ya+yb,za+zb)
+			/// @result (d1,d2,...,dn)+(e1,e2b,...,en) => (d1+e1,d2+e2,..,dn+en)
 			inline VectorXd<T, dim> operator + (const VectorXd<T, dim> & paramVector) const
 			{
 				VectorXd<T, dim> result(*this);
@@ -111,7 +117,7 @@ namespace pma
 
 			/// Operator -= decrement vector with another vector
 			/// @param vector to use for substraction operation
-			/// @result (a1,a2,...,an) -= (b1,b2,...,bn) => (a1 - b1,a2 - b2,...,an - bn)
+			/// @result (d1,d2,...,dn)-=(e1,e2b,...,en) => (d1-=e1,d2-=e2,..,dn-=en)
 			inline VectorXd<T, dim> & operator -= (const VectorXd<T, dim> & paramVector)
 			{
 				for (int iPos = 0; iPos < dim; iPos++)
@@ -146,7 +152,7 @@ namespace pma
 			inline VectorXd<T, dim> operator * (const T & paramValue) const
 			{
 				VectorXd<T, dim> result(*this);
-				return (result * paramValue);
+				return (result *= paramValue);
 			}
 
 			/// Operator /= division vector with T paramValue
@@ -172,7 +178,7 @@ namespace pma
 					throw;
 
 				VectorXd<T, dim> result(*this);
-				return (result / paramValue);
+				return (result /= paramValue);
 			}
 
 			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T, dim> & paramVector)
