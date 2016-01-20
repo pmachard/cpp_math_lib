@@ -7,10 +7,10 @@ namespace pma
 {
 	namespace math
 	{
-		const unsigned int X = 0;
-		const unsigned int Y = 1;
-		const unsigned int Z = 2;
-		const unsigned int T = 3;
+		const unsigned int _X_ = 0;
+		const unsigned int _Y_ = 1;
+		const unsigned int _Z_ = 2;
+		const unsigned int _T_ = 3;
 
 		/// @class mathematical vector with (T,dim) (d1,d2,...,dn).
 		template <typename T, unsigned int dim> class VectorXd
@@ -194,6 +194,74 @@ namespace pma
 				return paramOutput;
 			}
 		};
+
+		template <typename T> class Vector1d : public VectorXd < T, 1 >
+		{
+		public:
+			inline Vector1d(T x)
+			{
+				operator[](_X_) = x;
+			}
+
+			inline const T &  getX(void) const { return operator[](_X_); }
+			inline T &  getX(void) { return operator[](_X_); }
+		};
+
+		template <typename T> class Vector2d : public VectorXd < T, 2 >
+		{
+		public :		
+			inline Vector2d(T x, T y)
+			{
+				operator[](_X_) = x;
+				operator[](_Y_) = y;
+			}
+
+			inline const T &  getX(void) const { return operator[](_X_); }
+			inline const T & getY(void) const { return operator[](_Y_); }
+			inline T &  getX(void) { return operator[](_X_); }
+			inline T & getY(void) { return operator[](_Y_); }
+
+		};
+
+		template <typename T> class Vector3d : public VectorXd < T, 3 >
+		{
+		public:
+			inline Vector3d(T x, T y, T z)
+			{
+				operator[](_X_) = x;
+				operator[](_Y_) = y;
+				operator[](_Z_) = z;
+			}
+
+			inline const T &  getX(void) const { return operator[](_X_); }
+			inline const T & getY(void) const { return operator[](_Y_); }
+			inline const T & getZ(void) const { return operator[](_Z_); }
+			inline T &  getX(void) { return operator[](_X_); }
+			inline T & getY(void) { return operator[](_Y_); }
+			inline T & getZ(void) { return operator[](_Z_); }
+		};
+
+		template <typename T> class Vector4d : public VectorXd < T, 4 >
+		{
+		public:
+			inline Vector4d(T x, T y, T z, T t)
+			{
+				operator[](_X_) = x;
+				operator[](_Y_) = y;
+				operator[](_Z_) = z;
+				operator[](_T_) = t;
+			}
+
+			inline const T &  getX(void) const { return operator[](_X_); }
+			inline const T & getY(void) const { return operator[](_Y_); }
+			inline const T & getZ(void) const { return operator[](_Z_); }
+			inline const T & getT(void) const { return operator[](_T_); }
+			inline T &  getX(void) { return operator[](_X_); }
+			inline T & getY(void) { return operator[](_Y_); }
+			inline T & getZ(void) { return operator[](_Z_); }
+			inline T & getT(void) { return operator[](_T_); }
+		};
+
 	}
 }
 
