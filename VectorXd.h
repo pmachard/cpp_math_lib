@@ -181,6 +181,21 @@ namespace pma
 				return (result /= paramValue);
 			}
 
+			inline bool operator == (const VectorXd<T,dim> & paramVector)
+			{
+				for (int iPos = 0; iPos < dim; iPos++)
+				{
+					if (m_data[iPos] != paramVector.m_data[iPos])
+						return false;
+				}
+				return true;
+			}
+
+			inline bool operator != (const VectorXd<T, dim> & paramVector)
+			{
+				return !this->operator==(paramVector);
+			}
+
 			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T, dim> & paramVector)
 			{
 				paramOutput << "(";
