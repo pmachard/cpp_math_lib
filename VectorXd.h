@@ -236,6 +236,12 @@ namespace pma
 			inline T &  getX(void) { return operator[](_X_); }
 			inline T & getY(void) { return operator[](_Y_); }
 
+			inline Vector2d<T> MakeXY(void) { return Vector2d<T>(getX(), getY()); }
+			inline Vector2d<T> MakeYX(void) { return Vector2d<T>(getY(), getX()); }
+
+			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
+			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
+
 		};
 
 		template <typename T> class Vector3d : public VectorXd < T, 3 >
@@ -254,6 +260,21 @@ namespace pma
 			inline T &  getX(void) { return operator[](_X_); }
 			inline T & getY(void) { return operator[](_Y_); }
 			inline T & getZ(void) { return operator[](_Z_); }
+
+			inline Vector3d<T> MakeXYZ(void) { return Vector3d<T>(getX(), getY(), getZ()); }
+			inline Vector3d<T> MakeXZY(void) { return Vector3d<T>(getX(), getZ(), getY()); }
+			inline Vector3d<T> MakeYXZ(void) { return Vector3d<T>(getY(), getX(), getZ()); }
+			inline Vector3d<T> MakeYZX(void) { return Vector3d<T>(getY(), getZ(), getX()); }
+			inline Vector3d<T> MakeZXY(void) { return Vector3d<T>(getZ(), getX(), getY()); }
+			inline Vector3d<T> MakeZYX(void) { return Vector3d<T>(getZ(), getY(), getX()); }
+
+			inline Vector2d<T> MakeXY(void) { return Vector2d<T>(getX(), getY()); }
+			inline Vector2d<T> MakeXZ(void) { return Vector2d<T>(getX(), getZ()); }
+			inline Vector2d<T> MakeYZ(void) { return Vector2d<T>(getY(), getZ()); }
+
+			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
+			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
+			inline Vector1d<T> MakeZ(void) { return Vector1d<T>(getZ()); }
 		};
 
 		template <typename T> class Vector4d : public VectorXd < T, 4 >
@@ -275,8 +296,21 @@ namespace pma
 			inline T & getY(void) { return operator[](_Y_); }
 			inline T & getZ(void) { return operator[](_Z_); }
 			inline T & getT(void) { return operator[](_T_); }
-		};
 
+			inline Vector4d<T> MakeXYZT(void) { return Vector3d<T>(getX(), getY(), getZ(), getT()); }
+
+			inline Vector3d<T> MakeXYZ(void) { return Vector3d<T>(getX(), getY(), getZ()); }
+
+			inline Vector2d<T> MakeXY(void) { return Vector2d<T>(getX(), getY()); }
+			inline Vector2d<T> MakeXZ(void) { return Vector2d<T>(getX(), getZ()); }
+			inline Vector2d<T> MakeYZ(void) { return Vector2d<T>(getY(), getZ()); }
+
+			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
+			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
+			inline Vector1d<T> MakeZ(void) { return Vector1d<T>(getZ()); }
+			inline Vector1d<T> MakeT(void) { return Vector1d<T>(getT()); }
+
+		};
 	}
 }
 
