@@ -236,11 +236,24 @@ namespace pma
 			inline T &  getX(void) { return operator[](_X_); }
 			inline T & getY(void) { return operator[](_Y_); }
 
+			inline T getX2(void) { return (operator[](_X_)*operator[](_X_)); }
+			inline T getY2(void) { return (operator[](_Y_)*operator[](_Y_)); }
+
 			inline Vector2d<T> MakeXY(void) { return Vector2d<T>(getX(), getY()); }
 			inline Vector2d<T> MakeYX(void) { return Vector2d<T>(getY(), getX()); }
 
 			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
 			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
+
+			inline double operator ^ (const Vector2d<T> & vector) const
+			{
+				return (getX() * vector.getY()) - (getY() * vector.getX());
+			}
+
+			inline T LengthSquared(void)
+			{
+				return getX2() + getY2();
+			}
 
 		};
 
@@ -275,6 +288,13 @@ namespace pma
 			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
 			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
 			inline Vector1d<T> MakeZ(void) { return Vector1d<T>(getZ()); }
+
+			static Vector3d<T> Cross(const Vector3d<T> & vectorA, const Vector3d<T> & vectorB)
+			{
+				return SimpleVector3D(vectorA.getY() * vectorB.getZ() - vectorA.getZ() * vectorB.getY(),
+					vectorA.getZ() * vectorB.getX() - vectorA.getX() * vectorB.getZ(),
+					vectorA.getX() * vectorB.getY() - vectorA.getY() * vectorB.getX());
+			}
 		};
 
 		template <typename T> class Vector4d : public VectorXd < T, 4 >
@@ -309,7 +329,6 @@ namespace pma
 			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
 			inline Vector1d<T> MakeZ(void) { return Vector1d<T>(getZ()); }
 			inline Vector1d<T> MakeT(void) { return Vector1d<T>(getT()); }
-
 		};
 	}
 }
