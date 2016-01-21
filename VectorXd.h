@@ -250,11 +250,27 @@ namespace pma
 				return (getX() * vector.getY()) - (getY() * vector.getX());
 			}
 
-			inline T LengthSquared(void)
+			inline T SquaredLength(void)
 			{
 				return getX2() + getY2();
 			}
 
+			inline T Length(void) const {
+				return (T)sqrt(SquaredLength());
+			};
+
+			inline T Normalize(void)
+			{
+				T l = Length();
+
+				if (l == (T) 0.0f)
+					return (T) 0.0f;
+
+				getX() /= l;
+				getY() /= l;
+
+				return l;
+			};
 		};
 
 		template <typename T> class Vector3d : public VectorXd < T, 3 >
@@ -332,4 +348,5 @@ namespace pma
 		};
 	}
 }
+
 
