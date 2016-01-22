@@ -196,6 +196,28 @@ namespace pma
 				return !this->operator==(paramVector);
 			}
 
+			inline T Min (void) const
+			{
+				T result = m_data[0];
+				for (int iPos = 1; iPos < dim; iPos++)
+				{
+					if (result > m_data[iPos] )
+						result = m_data[iPos];
+				}
+				return result;
+			}
+
+			inline T Max(void) const
+			{
+				T result = m_data[0];
+				for (int iPos = 1; iPos < dim; iPos++)
+				{
+					if (result < m_data[iPos])
+						result = m_data[iPos];
+				}
+				return result;
+			}
+
 			friend std::ostream & operator<< (std::ostream & paramOutput, const VectorXd<T, dim> & paramVector)
 			{
 				paramOutput << "(";
@@ -220,6 +242,8 @@ namespace pma
 
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline T &  getX(void) { return operator[](_X_); }
+
+			static Vector1d<T> Zero(void) { return Vector1d<T>((T)0.0); }
 		};
 
 		template <typename T> class Vector2d : public VectorXd < T, 2 >
@@ -236,6 +260,10 @@ namespace pma
 				operator[](_X_) = source[_X_];
 				operator[](_Y_) = source[_Y_];
 			}
+
+			static Vector2d<T> Zero(void) { return Vector2d<T>((T)0.0, (T)0.0); }
+			static Vector2d<T> AxisX(void) { return Vector2d<T>((T)1.0, (T)0.0); }
+			static Vector2d<T> AxisY(void) { return Vector2d<T>((T)0.0, (T)1.0); }
 
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
@@ -288,7 +316,6 @@ namespace pma
 			static inline T Distance(const Vector2d<T> & paramVectorA, const Vector2d<T> & paramVectorB)
 			{
 				Vector2d<T> diff = paramVectorA - paramVectorB;
-
 				return diff.Length();
 			}
 
@@ -311,6 +338,11 @@ namespace pma
 				operator[](_Y_) = source[_Y_];
 				operator[](_Z_) = source[_Z_];
 			}
+
+			static Vector3d<T> Zero(void) { return Vector3d<T>((T)0.0, (T)0.0, (T)0.0); }
+			static Vector3d<T> AxisX(void) { return Vector3d<T>((T)1.0, (T)0.0, (T)0.0); }
+			static Vector3d<T> AxisY(void) { return Vector3d<T>((T)0.0, (T)1.0, (T)0.0); }
+			static Vector3d<T> AxisZ(void) { return Vector3d<T>((T)0.0, (T)0.0, (T)1.0); }
 
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
