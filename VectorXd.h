@@ -7,6 +7,8 @@ namespace pma
 {
 	namespace math
 	{
+		const double ESPILON = 10e-10;
+
 		const unsigned int _X_ = 0;
 		const unsigned int _Y_ = 1;
 		const unsigned int _Z_ = 2;
@@ -68,7 +70,8 @@ namespace pma
 				return (*this);
 			}
 
-			inline T& operator[] (unsigned int paramIndex) {
+			inline T& operator[] (unsigned int paramIndex) 
+			{
 				if (paramIndex > dim - 1)
 					throw range_error("VectorXd operator [] out of range access : ");
 
@@ -114,6 +117,15 @@ namespace pma
 				VectorXd<T, dim> result(*this);
 				return (result += paramVector);
 			}
+
+			inline VectorXd<T, dim> & operator-(void)
+			{
+				for (int iPos = 0; iPos < dim; iPos++)
+					m_data[iPos] = -m_data[iPos];
+
+				return (*this);
+			}
+
 
 			/// Operator -= decrement vector with another vector
 			/// @param vector to use for substraction operation
@@ -265,6 +277,9 @@ namespace pma
 			static Vector2d<T> AxisX(void) { return Vector2d<T>((T)1.0, (T)0.0); }
 			static Vector2d<T> AxisY(void) { return Vector2d<T>((T)0.0, (T)1.0); }
 
+			inline void setX(const T & value) { operator[](_X_) = value; }
+			inline void setY(const T & value) { operator[](_Y_) = value; }
+
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
 			inline T &  getX(void) { return operator[](_X_); }
@@ -279,7 +294,7 @@ namespace pma
 			inline Vector1d<T> MakeX(void) { return Vector1d<T>(getX()); }
 			inline Vector1d<T> MakeY(void) { return Vector1d<T>(getY()); }
 
-			inline double operator ^ (const Vector2d<T> & vector) const
+			inline double operator * (const Vector2d<T> & vector) const
 			{
 				return (getX() * vector.getY()) - (getY() * vector.getX());
 			}
@@ -319,7 +334,10 @@ namespace pma
 				return diff.Length();
 			}
 
-
+			inline bool IsNormalized()
+			{						
+				return fabs((T)(Length() - 1.0)) < ESPILON;
+			}
 		};
 
 		template <typename T> class Vector3d : public VectorXd < T, 3 >
@@ -343,6 +361,10 @@ namespace pma
 			static Vector3d<T> AxisX(void) { return Vector3d<T>((T)1.0, (T)0.0, (T)0.0); }
 			static Vector3d<T> AxisY(void) { return Vector3d<T>((T)0.0, (T)1.0, (T)0.0); }
 			static Vector3d<T> AxisZ(void) { return Vector3d<T>((T)0.0, (T)0.0, (T)1.0); }
+
+			inline void setX(const T & value) { operator[](_X_) = value; }
+			inline void setY(const T & value) { operator[](_Y_) = value; }
+			inline void setZ(const T & value) { operator[](_Z_) = value; }
 
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
@@ -373,12 +395,22 @@ namespace pma
 					vectorA.getX() * vectorB.getY() - vectorA.getY() * vectorB.getX());
 			}
 
-			/// Operator ^ scalar product
+			/// Operator * scalar product
 			/// @param vector to use for scalar operation
 			/// @return T (xa,ya,za)^(xb,yb,zb) = (xa*xb) + (ya*yb) + (za*zb)
-			inline T operator ^ (const Vector3d<T> & paramVector) const
+			inline T operator * (const Vector3d<T> & paramVector) const
 			{
 				return (getX() * paramVector.getX()) + (getY() * paramVector.getY()) + (getZ() * paramVector.getZ());
+			}
+
+			
+			inline Vector3d<T> operator ^ (const Vector3d<T> & paramVector) const 
+			{
+				return Vector3d<T> (	
+					((getY() * paramVector.getZ()) - (getZ() * paramVector.getY())),
+					((getZ() * paramVector.getX()) - (getX() * paramVector.getZ())),
+					((getX() * paramVector.getY()) - (getY() * paramVector.getX())));
+
 			}
 
 			inline T Dot(const Vector3d<T> & paramVectorA, const Vector3d<T> & paramVectorB) const
@@ -424,7 +456,10 @@ namespace pma
 				return diff.Length();
 			}
 
-
+			inline bool IsNormalized()
+			{
+				return fabs((T)(Length() - 1.0)) < ESPILON;
+			}
 		};
 
 		template <typename T> class Vector4d : public VectorXd < T, 4 >
@@ -437,6 +472,11 @@ namespace pma
 				operator[](_Z_) = z;
 				operator[](_T_) = t;
 			}
+
+			inline void setX(const T & value) { operator[](_X_) = value; }
+			inline void setY(const T & value) { operator[](_Y_) = value; }
+			inline void setZ(const T & value) { operator[](_Z_) = value; }
+			inline void setT(const T & value) { operator[](_T_) = value; }
 
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
