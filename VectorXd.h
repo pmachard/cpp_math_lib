@@ -305,6 +305,13 @@ namespace pma
 				operator[](_Z_) = z;
 			}
 
+			inline Vector3d(const VectorXd < T, 3 > & source)
+			{
+				operator[](_X_) = source[_X_];
+				operator[](_Y_) = source[_Y_];
+				operator[](_Z_) = source[_Z_];
+			}
+
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
 			inline const T & getZ(void) const { return operator[](_Z_); }
@@ -333,6 +340,59 @@ namespace pma
 					vectorA.getZ() * vectorB.getX() - vectorA.getX() * vectorB.getZ(),
 					vectorA.getX() * vectorB.getY() - vectorA.getY() * vectorB.getX());
 			}
+
+			/// Operator ^ scalar product
+			/// @param vector to use for scalar operation
+			/// @return T (xa,ya,za)^(xb,yb,zb) = (xa*xb) + (ya*yb) + (za*zb)
+			inline T operator ^ (const Vector3d<T> & paramVector) const
+			{
+				return (getX() * paramVector.getX()) + (getY() * paramVector.getY()) + (getZ() * paramVector.getZ());
+			}
+
+			inline T Dot(const Vector3d<T> & paramVectorA, const Vector3d<T> & paramVectorB) const
+			{
+				return (paramVectorA.getX() * paramVectorB.getX() + paramVectorA.getY() * paramVectorB.getY() + paramVectorA.getZ() * paramVectorB.getZ());
+			}
+
+			inline T SquaredLength() const
+			{
+				return (Dot(*this, *this));
+			};
+
+			inline T Length(void) const {
+				return (T)sqrt(SquaredLength());
+			};
+
+			inline T Normalize(void)
+			{
+				T l = Length();
+
+				if (l == (T) 0.0f)
+					return (T) 0.0f;
+
+				getX() /= l;
+				getY() /= l;
+				getZ() /= l;
+
+				return l;
+			};
+
+			static inline Vector3d<T> Normalize(const Vector3d<T> & paramVector)
+			{
+				Vector3d<T> r(paramVector);
+				r.Normalize();
+				return r;
+			}
+
+			static inline T Distance(const Vector3d<T> & paramVectorA, const Vector3d<T> & paramVectorB)
+			{
+
+				Vector3d<T> diff = paramVectorA - paramVectorB;
+
+				return diff.Length();
+			}
+
+
 		};
 
 		template <typename T> class Vector4d : public VectorXd < T, 4 >
