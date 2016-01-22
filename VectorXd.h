@@ -231,6 +231,12 @@ namespace pma
 				operator[](_Y_) = y;
 			}
 
+			inline Vector2d(const VectorXd < T, 2 > & source)
+			{
+				operator[](_X_) = source[_X_];
+				operator[](_Y_) = source[_Y_];
+			}
+
 			inline const T &  getX(void) const { return operator[](_X_); }
 			inline const T & getY(void) const { return operator[](_Y_); }
 			inline T &  getX(void) { return operator[](_X_); }
@@ -271,6 +277,22 @@ namespace pma
 
 				return l;
 			};
+
+			static inline Vector2d<T> Normalize(const Vector2d<T> & paramVector)
+			{
+				Vector2d<T> r(paramVector);
+				r.Normalize();
+				return r;			
+			}
+
+			static inline T Distance(const Vector2d<T> & paramVectorA, const Vector2d<T> & paramVectorB)
+			{
+				Vector2d<T> diff = paramVectorA - paramVectorB;
+
+				return diff.Length();
+			}
+
+
 		};
 
 		template <typename T> class Vector3d : public VectorXd < T, 3 >
