@@ -236,8 +236,8 @@ namespace pma
 			inline T &  getX(void) { return operator[](_X_); }
 			inline T & getY(void) { return operator[](_Y_); }
 
-			inline T getX2(void) { return (operator[](_X_)*operator[](_X_)); }
-			inline T getY2(void) { return (operator[](_Y_)*operator[](_Y_)); }
+			inline T getX2(void) const { return (operator[](_X_)*operator[](_X_)); }
+			inline T getY2(void) const { return (operator[](_Y_)*operator[](_Y_)); }
 
 			inline Vector2d<T> MakeXY(void) { return Vector2d<T>(getX(), getY()); }
 			inline Vector2d<T> MakeYX(void) { return Vector2d<T>(getY(), getX()); }
@@ -250,7 +250,7 @@ namespace pma
 				return (getX() * vector.getY()) - (getY() * vector.getX());
 			}
 
-			inline T SquaredLength(void)
+			inline T SquaredLength(void) const
 			{
 				return getX2() + getY2();
 			}
