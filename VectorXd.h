@@ -1,7 +1,11 @@
 #pragma once
 
 #include "stdafx.h"
+#include <list>
+#include <vector>
 #include <ostream>
+
+using namespace std;
 
 namespace pma
 {
@@ -343,7 +347,8 @@ namespace pma
 		template <typename T> class Vector3d : public VectorXd < T, 3 >
 		{
 		public:
-			inline Vector3d(T x, T y, T z)
+
+			inline Vector3d(T x = (T) 0.0, T y = (T) 0.0, T z = (T) 0.0)
 			{
 				operator[](_X_) = x;
 				operator[](_Y_) = y;
@@ -452,7 +457,6 @@ namespace pma
 			{
 
 				Vector3d<T> diff = paramVectorA - paramVectorB;
-
 				return diff.Length();
 			}
 
@@ -460,6 +464,27 @@ namespace pma
 			{
 				return fabs((T)(Length() - 1.0)) < ESPILON;
 			}
+
+			static inline list<Vector3d<T>> ToList(T * p, unsigned int s)
+			{
+				list<Vector3d<T>> result;
+				for (int i = 0; i < s; i++, p+=3)
+				{
+					result.push_back(Vector3d<T>(p[0], p[1], p[2]));
+				}
+				return result;
+			}
+
+			static inline vector<Vector3d<T>> ToVector(T * p, unsigned int s)
+			{
+				vector<Vector3d<T>> result(s);
+				for (int i = 0; i < s; i++, p += 3)
+				{
+					result.push_back(Vector3d<T>(p[0], p[1], p[2]));
+				}
+				return result;
+			}
+
 		};
 
 		template <typename T> class Vector4d : public VectorXd < T, 4 >
