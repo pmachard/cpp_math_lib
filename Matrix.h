@@ -74,5 +74,26 @@ namespace pma
 			{
 			};
 		};
+		
+		template <typename T> class Matrix2x3 : public Matrix < T, 2, 3 >
+		{
+		public:
+			inline Matrix2x3() : Matrix < T, 2, 3 >() {};
+			inline Matrix2x3(T value) : Matrix < T, 2, 3 >(value) {};
+			inline Matrix2x3(T * ptrValue) : Matrix < T, 2, 3 >(ptrValue) {};
+			inline ~Matrix2x3() {};
+		};
+
+			template <typename T> class Matrix3x3 : public Matrix < T, 3, 3 >
+			{
+			public:
+				inline Matrix3x3() : Matrix < T, 3, 3 >() {};
+				inline Matrix3x3(T value) : Matrix < T, 3, 3 >(value) {};
+				inline Matrix3x3(T * ptrValue) : Matrix < T, 3, 3 >(ptrValue) {};
+				inline ~Matrix3x3() {};
+			};
+
+	}
+		
 	}
 }
